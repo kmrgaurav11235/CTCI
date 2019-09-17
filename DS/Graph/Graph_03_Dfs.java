@@ -15,8 +15,22 @@ class Graph_03_Dfs {
             }
         }
 
-        void addEdge(int source, int destination) {
-            adjacencyListArray[source].add(destination);
+        boolean addEdge(int source, int destination) {
+            if (0 <= source && 0 <= destination && numVertices > source && numVertices > destination) {
+                adjacencyListArray[source].add(destination);
+                return true;
+            }
+            return false;
+        }
+
+        void display() {
+            for (int i = 0; i < numVertices; i++) {
+                System.out.print("Adjacency list at Vertex " + i + ":\nHEAD -> ");
+                for (int vertex: adjacencyListArray[i]) {
+                    System.out.print(vertex + " -> ");
+                }
+                System.out.println("null");
+            }
         }
 
         private void dfsUtil(int vertex, boolean [] isVisited) {
@@ -64,6 +78,8 @@ class Graph_03_Dfs {
         g.addEdge(1, 2);
         g.addEdge(2, 4);
         g.addEdge(5, 6);
+
+        g.display();
 
         g.dfs(4);
         g.dfs(5);
