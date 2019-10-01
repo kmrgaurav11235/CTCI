@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /*
 Given a binary tree, write a function to get the maximum width of the given tree. Width of a tree is maximum of widths of all levels.Let us consider the below example tree.
 
@@ -47,18 +50,33 @@ public class BinaryTree_05_MaxWidthOfTree {
             this.root = new Node(data);
         }
 
-        int getHeight(Node node) {
+        void getMaxWidthUtil(Node node, int level, Map <Integer, Integer> levelToWidthMap) {
             if (node == null) {
+                return;
+            }
+            if (levelToWidthMap.containsKey(level)) {
+                levelToWidthMap.put(level, levelToWidthMap.get(level) + 1);
+            } else {
+                levelToWidthMap.put(level, 1);
+            }
+            getMaxWidthUtil(node.left, level + 1, levelToWidthMap);
+            getMaxWidthUtil(node.right, level + 1, levelToWidthMap);
+        }
+
+        int getMaxWidth() {
+            if (root == null) {
                 return 0;
             }
-            int lHeight = getHeight(node.left);
-            int rHeight = getHeight(node.right);
-
-            if (lHeight >= rHeight) {
-                return (lHeight + 1);
-            } else {
-                return (rHeight + 1);
+            Map <Integer, Integer> levelToWidthMap = new HashMap<>();
+            getMaxWidthUtil(root, 0, levelToWidthMap);
+            
+            int maxWidth = 0;
+            for (int value : levelToWidthMap.values()) {
+                if (value > maxWidth) {
+                    maxWidth = value;
+                }                
             }
+            return maxWidth;
         }
     }
 
@@ -66,7 +84,7 @@ public class BinaryTree_05_MaxWidthOfTree {
         BinaryTree tree = new BinaryTree(); 
 
        /* 
-        Constructed bunary tree is: 
+        Constructed binary tree is: 
               1 
             /  \ 
            2    3 
@@ -84,6 +102,6 @@ public class BinaryTree_05_MaxWidthOfTree {
         tree.root.right.right.left = new Node(6); 
         tree.root.right.right.right = new Node(7); 
    
-        System.out.println("Maximum width is " + tree.getMaxWidth(tree.root)); 
+        System.out.println("Maximum width is " + tree.getMaxWidth()); 
     }
 }
