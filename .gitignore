@@ -24,6 +24,12 @@ hs_err_pid*
 
 # Visual Studio
 .vscode/*
+*.code-workspace
 
 # mac
 .DS_Store
+
+# intellij
+.idea/*
+out/*
+*.iml
