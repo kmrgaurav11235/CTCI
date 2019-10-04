@@ -2,7 +2,7 @@
 Write a program to print all permutations of a given string
 Lecture: https://www.youtube.com/watch?v=78t_yHuGg-0
 */
-class BackTracking_03_PermutationsOfString {
+class BackTracking_05_PermutationsOfString {
     static void moveChar (StringBuilder from, StringBuilder to, int fromIndex, int toIndex) {
         char nextChar = from.charAt(fromIndex);
         // Remove char
