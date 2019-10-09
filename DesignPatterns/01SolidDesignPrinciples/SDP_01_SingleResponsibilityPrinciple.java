@@ -6,6 +6,8 @@ import java.util.List;
 
 /* 
 Single Responsibility Principle states that a class should have one primary reponsibility.
+    1. A class should have only one reason to change.
+    2. Seperation of concerns - Different classes handling different/independent problems.
 If you take on lots of responsibility, you end up with something called a 'God Object' which
 is an anti-pattern (something that you shouldn't have in your code).
 */
