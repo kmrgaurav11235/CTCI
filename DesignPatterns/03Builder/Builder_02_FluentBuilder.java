@@ -2,9 +2,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /*
-Having a massive object with 10 constructor arguments is not productive. Instead, a Builder allows
-for step-by-step construction.
-Let's create an Html Element and allow for it to be turned into a String.
+Fluent interface allows you to write long chains to build objects. In last files, anytime we want to add
+a element, we call builder.addChild() in seperate statements. What we want is for addChild() to return 
+Builder so that we can make calls like: builder.addChild().addChild() ... and so on.
+This is just a small change.
 */
 class HtmlElement {
     public String tag, text; // Stores tag and corresponding text
@@ -62,18 +63,20 @@ class HtmlElement {
 }
 
 // Builder
-class HtmlBuilder {
+class FluentHtmlBuilder {
     String rootName;
     HtmlElement root = new HtmlElement();
 
-    HtmlBuilder(String rootName) {
+    FluentHtmlBuilder(String rootName) {
         this.rootName = rootName;
         root.tag = rootName;
     }
 
-    // Enriches HtmlBuilder
-    public void addChild(String childTag, String childText) {
+    // Enriches FluentHtmlBuilder
+    // Returns Builder so that we can chain calls
+    public FluentHtmlBuilder addChild(String childTag, String childText) {
         root.elements.add(new HtmlElement(childTag, childText));
+        return this;
     }
 
     public void clear() {
@@ -88,13 +91,13 @@ class HtmlBuilder {
     }
 }
 
-class Builder_01_JavaBuilder {
+class Builder_02_FluentBuilder {
     public static void main(String[] args) {
-        HtmlBuilder builder = new HtmlBuilder("ul");
-        builder.addChild("li", "Item 1");
-        builder.addChild("li", "Item 2");
-        builder.addChild("li", "Item 3");
-        builder.addChild("li", "Item 4");
+        FluentHtmlBuilder builder = new FluentHtmlBuilder("ul");
+        builder.addChild("li", "Item 1")
+            .addChild("li", "Item 2")
+            .addChild("li", "Item 3")
+            .addChild("li", "Item 4");
 
         System.out.println(builder); // builder.toString() is called automatically
     }
