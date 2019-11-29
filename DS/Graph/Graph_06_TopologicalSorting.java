@@ -1,7 +1,7 @@
 /*
 Topological Sorting sorts the vertices of a Directed Acyclic Graph (DAG) in such a way that for 
 every edge uv in the graph, u comes before v in the sorted list.
-Topololical Sorting is not possible if the Graph in not directed and acyclic.
+Topological Sorting is not possible if the Graph in not directed and acyclic.
 A number of different topological sorts are generally possible for a single DAG.
 */
 import java.util.Deque;
