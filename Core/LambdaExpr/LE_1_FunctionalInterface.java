@@ -1,4 +1,8 @@
-// https://www.geeksforgeeks.org/functional-interfaces-java/
+/* 
+https://www.geeksforgeeks.org/functional-interfaces-java/
+Lambda expressions provide us with an easier method to work with interfaces that have only got
+one method. These interfaces can thus, represent a functionality.
+*/
 @FunctionalInterface
 interface LE_1_Interface {
   int getSquare(int num);

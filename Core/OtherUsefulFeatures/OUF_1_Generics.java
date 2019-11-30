@@ -55,7 +55,7 @@ class Team {
 
 /*
 This team has a simple issue. It allows us to form a team using any type of Player object, e.g. a FootballPlayer,
-CricketPlayer and HockeyPlayer can all be a part of single team. This is demostrated in the main method. To deal with
+CricketPlayer and HockeyPlayer can all be a part of single team. This is demonstrated in the main method. To deal with
 this, let us create a better team using Generics.
 */
 
@@ -135,18 +135,18 @@ Notes:
     }
 */
 
-// Finally let's allow team comparisions using the Comparable interface
-class ComparaleTeamWithGenericsAndBound<T extends Player> implements Comparable<ComparaleTeamWithGenericsAndBound<T>>{
+// Finally let's allow team comparisons using the Comparable interface
+class ComparableTeamWithGenericsAndBound<T extends Player> implements Comparable<ComparableTeamWithGenericsAndBound<T>>{
     /* 
     Note the syntax. Usual syntax of Comparable: Comparable<Class to compare>
-    If we keep just Comparable<ComparaleTeamWithGenericsAndBound>, we will be able to compare points
+    If we keep just Comparable<ComparableTeamWithGenericsAndBound>, we will be able to compare points
     different types of teams, e.g. Cricket and Hockey teams.
     */
     String name;
     int points;
     ArrayList<T> players;
 
-    ComparaleTeamWithGenericsAndBound(String name) {
+    ComparableTeamWithGenericsAndBound(String name) {
         this.name = name;
         points = 0;
         players = new ArrayList<>();
@@ -168,7 +168,7 @@ class ComparaleTeamWithGenericsAndBound<T extends Player> implements Comparable<
     }
 
     @Override
-    public int compareTo(ComparaleTeamWithGenericsAndBound<T> team) {
+    public int compareTo(ComparableTeamWithGenericsAndBound<T> team) {
         if (points > team.points) {
             return 1;
         } else if (points == team.points) {
@@ -180,7 +180,7 @@ class ComparaleTeamWithGenericsAndBound<T extends Player> implements Comparable<
 
     @Override
     public String toString() {
-        return "ComparaleTeamWithGenericsAndBound: " + name + " {Points : " + points + "}\n";
+        return "ComparableTeamWithGenericsAndBound: " + name + " {Points : " + points + "}\n";
     }
 }
 class OUF_1_Generics{
@@ -218,25 +218,25 @@ class OUF_1_Generics{
         // Below line will give compile time errors now.
         // TeamWithGenericsAndBound<String> invalidStringTeam1 = new TeamWithGenericsAndBound<>("Invalid Team");
 
-        System.out.println("**********  Comparale Team with Generics and Bound  **********");
-        ComparaleTeamWithGenericsAndBound<CricketPlayer> comparableCricketTeam0 = 
-                    new ComparaleTeamWithGenericsAndBound<>("First Comparable Cricket Team");
+        System.out.println("**********  Comparable Team with Generics and Bound  **********");
+        ComparableTeamWithGenericsAndBound<CricketPlayer> comparableCricketTeam0 = 
+                    new ComparableTeamWithGenericsAndBound<>("First Comparable Cricket Team");
         comparableCricketTeam0.addPlayer(sachin);
         comparableCricketTeam0.points = 10;
-        ComparaleTeamWithGenericsAndBound<CricketPlayer> comparableCricketTeam1 = 
-                    new ComparaleTeamWithGenericsAndBound<>("Second Comparable Cricket Team");
+        ComparableTeamWithGenericsAndBound<CricketPlayer> comparableCricketTeam1 = 
+                    new ComparableTeamWithGenericsAndBound<>("Second Comparable Cricket Team");
         comparableCricketTeam1.addPlayer(sachin);
         comparableCricketTeam1.points = 7;
         System.out.println(comparableCricketTeam0);
         System.out.println(comparableCricketTeam1);
         System.out.println("Comparing First team to second: " + comparableCricketTeam0.compareTo(comparableCricketTeam1));
 
-        ComparaleTeamWithGenericsAndBound<HockeyPlayer> comparableHockeyTeam0 = 
-                    new ComparaleTeamWithGenericsAndBound<>("First Comparable Hockey Team");
+        ComparableTeamWithGenericsAndBound<HockeyPlayer> comparableHockeyTeam0 = 
+                    new ComparableTeamWithGenericsAndBound<>("First Comparable Hockey Team");
         comparableHockeyTeam0.addPlayer(dhanraj);
         comparableHockeyTeam0.points = 5;
-        ComparaleTeamWithGenericsAndBound<HockeyPlayer> comparableHockeyTeam1 = 
-                    new ComparaleTeamWithGenericsAndBound<>("Second Comparable Hockey Team");
+        ComparableTeamWithGenericsAndBound<HockeyPlayer> comparableHockeyTeam1 = 
+                    new ComparableTeamWithGenericsAndBound<>("Second Comparable Hockey Team");
         comparableHockeyTeam1.addPlayer(dhanraj);
         comparableHockeyTeam1.points = 9;
         System.out.println(comparableHockeyTeam0);
