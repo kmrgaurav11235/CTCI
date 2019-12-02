@@ -3,22 +3,22 @@ import java.util.Collections;
 
 /*
 Fluent interface allows you to write long chains to build objects. In last files, anytime we want to add
-a element, we call builder.addChild() in seperate statements. What we want is for addChild() to return 
+a element, we call builder.addChild() in separate statements. What we want is for addChild() to return 
 Builder so that we can make calls like: builder.addChild().addChild() ... and so on.
 This is just a small change.
 */
-class HtmlElement {
+class HtmlElementWithIndentation1 {
     public String tag, text; // Stores tag and corresponding text
-    public ArrayList<HtmlElement> elements = new ArrayList<>();
+    public ArrayList<HtmlElementWithIndentation1> elements = new ArrayList<>();
     // This is recursive structure that stores other tags inside this one.
 
     private final int indentSize = 2;
     private final String newLine = System.lineSeparator();
 
-    HtmlElement() {
+    HtmlElementWithIndentation1() {
     }
 
-    HtmlElement(String tag, String text) {
+    HtmlElementWithIndentation1(String tag, String text) {
         this.tag = tag;
         this.text = text;
     }
@@ -47,7 +47,7 @@ class HtmlElement {
         }
 
         // Add the arraylist elements recursively
-        for (HtmlElement element : elements) {
+        for (HtmlElementWithIndentation1 element : elements) {
             htmlBuilder.append(element.toStringImpl(indentLevel + 1));
         }
 
@@ -65,7 +65,7 @@ class HtmlElement {
 // Builder
 class FluentHtmlBuilder {
     String rootName;
-    HtmlElement root = new HtmlElement();
+    HtmlElementWithIndentation1 root = new HtmlElementWithIndentation1();
 
     FluentHtmlBuilder(String rootName) {
         this.rootName = rootName;
@@ -75,12 +75,12 @@ class FluentHtmlBuilder {
     // Enriches FluentHtmlBuilder
     // Returns Builder so that we can chain calls
     public FluentHtmlBuilder addChild(String childTag, String childText) {
-        root.elements.add(new HtmlElement(childTag, childText));
+        root.elements.add(new HtmlElementWithIndentation1(childTag, childText));
         return this;
     }
 
     public void clear() {
-        root = new HtmlElement();
+        root = new HtmlElementWithIndentation1();
         root.tag = rootName;
     }
 
@@ -91,7 +91,7 @@ class FluentHtmlBuilder {
     }
 }
 
-class Builder_02_FluentBuilder {
+class Builder_03_FluentBuilder {
     public static void main(String[] args) {
         FluentHtmlBuilder builder = new FluentHtmlBuilder("ul");
         builder.addChild("li", "Item 1")

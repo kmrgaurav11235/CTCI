@@ -39,7 +39,7 @@ This looks like it should work. But it doesn't. As explained in the main method,
 returns PersonBuilder for which withPosition() is not available. 
 We can now use Java Recursive Generics to re-design PersonBuilder
 */
-class Builder_03_FluentBuilderWithRecursiveGenerics {
+class Builder_04_FluentBuilderWithRecursiveGenerics {
     public static void main(String[] args) {
         PersonBuilder personBuilder = new PersonBuilder();
         EmployeeBuilder employeeBuilder = new EmployeeBuilder();
