@@ -23,7 +23,8 @@ class PointWithFactoryMethod {
 }
 /*
 If we have a lot of factory methods, we might want to group them together in a separate class. This is Factory.
-To make sure that out Point constructor remains private, we will stick this class inside Point class and make it static
+To make sure that out Point constructor remains private, we will stick this class inside Point class and make it static.
+This step is not followed for all factories. Many of them reside outside the class.
 */
 class PointWithFactory {
     private double x, y;
