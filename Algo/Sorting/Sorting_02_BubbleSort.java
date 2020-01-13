@@ -5,7 +5,7 @@ https://www.geeksforgeeks.org/bubble-sort/
     they are in the wrong order.
 - Also called Sinking Sort as it 'Sinks' the 'last element of loop' to its proper place on every iteration.
 - Time Complexity: O(n^2)
-- Space Complexity: O(n)
+- Space Complexity: O(1)
 - In-place sort.
 - Stable sort.
 - Worst Performance: Worst case occurs when array is reverse sorted.
