@@ -6,9 +6,8 @@
     moment, and we get the optimal solution of the complete problem.
 - In other words, Greedy Choice property is: a locally optimal solution leads to a globally optimal solution.
 - Some examples of Greedy Algorithms: Selection sort, Insertion sort, Topological Sort, Prim’s Minimum Spanning 
-    Tree, Kruskal’s Minimum Spanning Tree, Activity Selection Problem, Coin change problem, Fractional knapsack 
-    problem. In all these problems, the Greedy choice property holds.
+    Tree, Kruskal’s Minimum Spanning Tree, Activity Selection Problem, Fractional knapsack problem. In all 
+    these problems, the Greedy choice property holds.
 */
 class GA_01_GreedyAlgorithm{
-
 }

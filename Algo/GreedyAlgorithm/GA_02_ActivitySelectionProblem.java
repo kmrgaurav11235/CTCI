@@ -2,7 +2,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 
 /*
@@ -60,6 +59,7 @@ class GA_02_ActivitySelectionProblem {
 
         // Sort the activities based on finishTime
         Collections.sort(activities, (x, y) -> x.getFinishTime() - y.getFinishTime());
+        // Implementing the compare method of Comparator interface
 
         Iterator<Activity> activitiesIterator = activities.iterator();
 
