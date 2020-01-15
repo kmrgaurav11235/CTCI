@@ -14,7 +14,7 @@ class Heap_01_MinHeap {
         1. getMin() -> Returns the Minimum Element in Heap. Time Complexity = O(1).
         2. extractMin() -> Extracts and returns the Minimum Element in Heap. Time Complexity = O(Logn) as this operation 
         needs to maintain the heap property (by calling heapify()) after removing root.
-        3. decreaseKey() -> Decreases the given element in Heap. Time complexity = O(Logn). If the decreases key value of 
+        3. decreaseKey() -> Decreases the given element in Heap. Time complexity = O(Logn). If the decreased key value of 
         a node is greater than the parent of the node, then we don’t need to do anything. Otherwise, we need to traverse 
         up to fix the violated heap property.
         4. insert() -> Inserts a new element in Heap. Time complexity = O(Logn). We add a new key at the end of the tree. 
