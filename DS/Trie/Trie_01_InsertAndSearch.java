@@ -54,40 +54,41 @@ class Trie_01_InsertAndSearch {
             return p.isEndOfWord;
         }
     }
+
     public static void main(String[] args) {
-        String keys[] = {"the", "a", "there", "answer", "any", "by", "bye", "their"}; 
-       
-        // Construct Trie 
+        String keys[] = { "the", "a", "there", "answer", "any", "by", "bye", "their" };
+
+        // Construct Trie
         Trie trie = new Trie();
 
         // Insert in Trie
-        for (int i = 0; i < keys.length ; i++) {
-            trie.insert(keys[i]); 
-        }
-       
-        // Search for different keys 
-        if(trie.search("the") == true) {
-            System.out.println("the: is present in trie"); 
-        } else {
-            System.out.println("the: is not present in trie"); 
+        for (int i = 0; i < keys.length; i++) {
+            trie.insert(keys[i]);
         }
 
-        if(trie.search("these") == true) {
-            System.out.println("these: is present in trie"); 
+        // Search for different keys
+        if (trie.search("the") == true) {
+            System.out.println("the: is present in trie");
         } else {
-            System.out.println("these: is not present in trie"); 
+            System.out.println("the: is not present in trie");
         }
 
-        if(trie.search("their") == true) {
-            System.out.println("their: is present in trie"); 
+        if (trie.search("these") == true) {
+            System.out.println("these: is present in trie");
         } else {
-            System.out.println("their: is not present in trie"); 
+            System.out.println("these: is not present in trie");
         }
 
-        if(trie.search("thaw") == true) {
-            System.out.println("thaw: is present in trie"); 
+        if (trie.search("their") == true) {
+            System.out.println("their: is present in trie");
         } else {
-            System.out.println("thaw: is not present in trie"); 
+            System.out.println("their: is not present in trie");
+        }
+
+        if (trie.search("thaw") == true) {
+            System.out.println("thaw: is present in trie");
+        } else {
+            System.out.println("thaw: is not present in trie");
         }
     }
 }

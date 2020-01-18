@@ -104,18 +104,20 @@ class Trie_02_Delete {
             deleteUtil(str, root, 0);
         }
     }
+
     static void searchAndDisplay(Trie trie, String str) {
-        if(trie.search(str) == true) {
-            System.out.println(str + ": is present in trie"); 
+        if (trie.search(str) == true) {
+            System.out.println(str + ": is present in trie");
         } else {
-            System.out.println(str + ": is not present in trie"); 
+            System.out.println(str + ": is not present in trie");
         }
     }
+
     public static void main(String[] args) {
-        Trie trie1  = new Trie();
-		
-		System.out.println("***********  CASE 1  ***********");
-		trie1.insert("bcde");
+        Trie trie1 = new Trie();
+
+        System.out.println("***********  CASE 1  ***********");
+        trie1.insert("bcde");
         trie1.insert("bckg");
 
         System.out.println("Before Deletion...");
@@ -127,31 +129,30 @@ class Trie_02_Delete {
         System.out.println("After Deleting bcde...");
         searchAndDisplay(trie1, "bcde");
         searchAndDisplay(trie1, "bckg");
-		
-		System.out.println("***********  CASE 2  ***********");
-        Trie trie2  = new Trie();
-		trie2.insert("bcde");
+
+        System.out.println("***********  CASE 2  ***********");
+        Trie trie2 = new Trie();
+        trie2.insert("bcde");
         trie2.insert("bcdefg");
-        
+
         System.out.println("Before Deletion...");
         searchAndDisplay(trie2, "bcde");
         searchAndDisplay(trie2, "bcdefg");
 
         trie2.delete("bcde");
-        
+
         System.out.println("After Deleting bcde...");
         searchAndDisplay(trie2, "bcde");
         searchAndDisplay(trie2, "bcdefg");
 
-		System.out.println("***********  CASE 3  ***********");
-        Trie trie3  = new Trie();
-		trie3.insert("bcde");
+        System.out.println("***********  CASE 3  ***********");
+        Trie trie3 = new Trie();
+        trie3.insert("bcde");
         trie3.insert("bc");
-        
+
         System.out.println("Before Deletion...");
         searchAndDisplay(trie3, "bcde");
         searchAndDisplay(trie3, "bc");
-
 
         trie3.delete("bcde");
 
@@ -160,8 +161,8 @@ class Trie_02_Delete {
         searchAndDisplay(trie3, "bc");
         searchAndDisplay(trie3, "b");
 
-		System.out.println("***********  CASE 4  ***********");
-        Trie trie4  = new Trie();
+        System.out.println("***********  CASE 4  ***********");
+        Trie trie4 = new Trie();
         trie4.insert("bcde");
 
         System.out.println("Before Deletion...");
