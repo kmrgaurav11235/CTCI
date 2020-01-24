@@ -51,6 +51,11 @@ Reentrant Synchronization: A thread cannot acquire a lock owned by another threa
     synchronized code, and both sets of code use the same lock. Without reentrant synchronization, synchronized code 
     would have to take many additional precautions to avoid having a thread cause itself to block.
 
+Critical Section: The code that is referencing a shared resource (e.g. a shared variable). Only one thread at a time
+    should be able to execute a critical section.
+Thread Safe: A class or a method is thread-safe when the developer has synchronized all the critical sections within
+    the code so that we don't have to worry about thread interference.
+
 Important points:
     1. When a thread enters into synchronized method or block, it acquires lock and once it completes its task and 
         exits from the synchronized method, it releases the lock.
