@@ -35,125 +35,108 @@ Producer-Consumer solution using threads in Java
     the consumer can go to sleep if it finds the buffer to be empty. The next time the producer puts data into the 
     buffer, it wakes up the sleeping consumer.
 - An inadequate solution could result in a deadlock where both processes are waiting to be awakened. 
+
+Notes about the code:
+- Q: Why use while for waiting? Why not use if?
+- A: Always call wait in a for/while loop that is testing the condition that you are waiting on. This is because
+    when a thread is notified to wake up, there is no guarantee that it is being woken up because the condition 
+    that it was waiting on, has changed. It is possible that the OS has woken it up for another reason. So, we 
+    always want to call wait() in a loop so that when it wakes up, it checks the condition again and goes back
+    to wait() if the condition has not changed.
+
+- Q: Why use notifyAll() rather than notify()?
+- A: We cannot notify a specific thread (as notify doesn't accepts any parameter). Because of this, it is 
+    conventional to use notifyAll() unless we are dealing with a situation with a significant number of threads 
+    that are waiting for the same lock.
 */
 class Message {
-    String msg;
-    boolean isEmpty;
+    private String message;
+    private boolean isEmpty;
 
-    Message(String msg, boolean isEmpty) {
-        this.msg = msg;
-        this.isEmpty = isEmpty;
-    }
-
-    public void sendMessage(String msg) {
-        this.msg = msg;
-        this.isEmpty = false;
-    }
-
-    public String receiveMessage() {
-        String msg = this.msg;
+    Message() {
         this.isEmpty = true;
-        return msg;
+    }
+
+    public synchronized void write(String message) {
+        while (!isEmpty) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                System.err.println("Exception while waiting in write() method. " + e);
+            }
+        }
+        this.message = message;
+        System.out.println("Writing message: " + message);
+        this.isEmpty = false;
+        notifyAll();
+    }
+
+    public synchronized String read() {
+        while (isEmpty) {
+            try {
+                wait();
+            } catch (Exception e) {
+                System.err.println("Exception while waiting in read() method. " + e);
+            }
+        }
+        System.out.println("Reading message: " + message);
+        isEmpty = true;
+        notifyAll();
+        return message;
     }
 }
 
-class ProducerConsumer {
-    public void produce(Message message) {
+class Producer implements Runnable {
+    private Message message;
+
+    Producer(Message message) {
+        this.message = message;
+    }
+
+    @Override
+    public void run() {
         String producedStrings[] = { "Humpty Dumpty sat on a wall", "Humpty Dumpty had a great fall.",
-                "All the king's horses and all the king's men", "Couldn't put Humpty together again.", "EOM" };
+                "All the king's horses and all the king's men", "Couldn't put Humpty together again." };
         Random random = new Random();
 
         for (String producedString : producedStrings) {
-            while (!message.isEmpty)
-                ;
-            synchronized (this) {
-                if (message.isEmpty) {
-                    System.out.println("Sending message: " + producedString);
-                    message.sendMessage(producedString);
-                    notifyAll();
-                } else {
-                    try {
-                        wait();
-                    } catch (InterruptedException e) {
-                        System.out.println("Exception in ProducerConsumer.produce() at wait()");
-                        e.printStackTrace();
-                    }
-                }
-            }
+            message.write(producedString);
             int sleepTime = random.nextInt(2000);
             try {
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
-                System.out.println("Exception in ProducerConsumer.produce() at sleep()");
-                e.printStackTrace();
+                System.err.println("Exception while sleeping in Producer. " + e);
             }
-
         }
 
+        message.write("EOM");
+    }
+}
+
+class Consumer implements Runnable {
+    private Message message;
+
+    Consumer(Message message) {
+        this.message = message;
     }
 
-    public void consume(Message message) {
+    @Override
+    public void run() {
         Random random = new Random();
-
-        while (!message.msg.equals("EOM")) {
-            while (message.isEmpty)
-                ;
-            synchronized (this) {
-                if (!message.isEmpty) {
-                    String consumedString = message.receiveMessage();
-                    System.out.println("Received message: " + consumedString);
-                    notifyAll();
-                } else {
-                    try {
-                        wait();
-                    } catch (InterruptedException e) {
-                        System.out.println("Exception in ProducerConsumer.consume() at wait()");
-                        e.printStackTrace();
-                    }
-                }
-            }
+        for (String readMessage = message.read(); !readMessage.equals("EOM"); readMessage = message.read()) {
             int sleepTime = random.nextInt(2000);
             try {
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
-                System.out.println("Exception in ProducerConsumer.consume() at sleep()");
-                e.printStackTrace();
+                System.err.println("Exception while sleeping in Consumer. " + e);
             }
         }
     }
 }
-
 class Concurrency_07_ProducerConsumer {
     public static void main(String[] args) {
-        ProducerConsumer producerConsumer = new ProducerConsumer();
-        Message message = new Message("SOM", true);
-
-        Thread producer = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                producerConsumer.produce(message);
-            }
-        });
-
-        Thread consumer = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                producerConsumer.consume(message);
-            }
-        });
-
-        producer.start();
-        consumer.start();
-
-        
-        try {
-            consumer.join();
-            producer.join();
-        } catch (InterruptedException e) {
-            System.out.println("Exception in Concurrency_07_ProducerConsumer");
-            e.printStackTrace();
-        }
+        Message message = new Message();
+        new Thread(new Producer(message)).start();
+        new Thread(new Consumer(message)).start();
     }
 }
