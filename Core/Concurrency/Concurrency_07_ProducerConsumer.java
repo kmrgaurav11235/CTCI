@@ -95,8 +95,8 @@ class Producer implements Runnable {
 
     @Override
     public void run() {
-        String producedStrings[] = { "Humpty Dumpty sat on a wall", "Humpty Dumpty had a great fall.",
-                "All the king's horses and all the king's men", "Couldn't put Humpty together again." };
+        String producedStrings[] = { "An Elven-maid there was of old", "A shining star by day",
+                "Her mantle white was hemmed with gold", "Her shoes of silver-grey." };
         Random random = new Random();
 
         for (String producedString : producedStrings) {
@@ -133,6 +133,7 @@ class Consumer implements Runnable {
         }
     }
 }
+
 class Concurrency_07_ProducerConsumer {
     public static void main(String[] args) {
         Message message = new Message();
