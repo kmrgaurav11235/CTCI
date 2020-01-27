@@ -4,6 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /*
 https://www.geeksforgeeks.org/reentrant-lock-java/
+https://www.geeksforgeeks.org/lock-framework-vs-thread-synchronization-in-java/
 The traditional way to achieve thread synchronization in Java is by the use of "synchronized" keyword. 
 While it provides a certain basic synchronization, the synchronized keyword is quite rigid in its use. 
 For example, 
@@ -65,6 +66,22 @@ The ReentrantLock is a better replacement for synchronization, which offers many
 synchronized. However, the existence of these obvious benefits are not a good enough reason to always prefer 
 ReentrantLock to synchronized. Instead, make the decision on the basis of whether you need the flexibility offered 
 by a ReentrantLock.
+
+------------------------------------------------------------------------------------------------------------------------------
+PARAMETERS	                     SYNCHRONIZED               LOCK FRAMEWORK
+------------------------------------------------------------------------------------------------------------------------------
+Across Methods	                 Not possible               Yes, Locks can be implemented across the methods, you can invoke 
+                                                            lock() in method1 and invoke unlock() in method2.	
+try to acquire lock	             Not possible               Yes, trylock(timeout) method is supported by Lock framework, which 
+                                                            will get the lock on the resource if it is available, else it returns 
+                                                            false and Thread wont get blocked.	
+Fair lock management	         Not possible               Yes, Fair lock management is available in case of lock framework. It 
+                                                            hands over the lock to long waiting thread. Even in fairness mode set 
+                                                            to true, if trylock is coded, it is served first.
+List of waiting threads	         Not possible               Yes, List of waiting threads can be seen using Lock framework
+Release of lock in exceptions	 Synchronized works         lock.lock(); myMethod();Lock.unlock();  ->  unlock() can't 
+                                 It releases the lock       be executed in this code if any exception being thrown from myMethod().
+------------------------------------------------------------------------------------------------------------------------------
 */
 
 class MyProducer implements Runnable {
