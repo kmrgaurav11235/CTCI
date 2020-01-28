@@ -1,4 +1,12 @@
+import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 /*
+https://www.geeksforgeeks.org/callable-future-java/
 - There are two ways of creating threads – one by extending the Thread class and other by creating a thread 
 with a Runnable. However, one feature lacking in  Runnable is that we cannot make a thread return result when 
 it terminates, i.e. when run() completes. For supporting this feature, the Callable interface is present in Java.
@@ -8,7 +16,7 @@ Callable vs Runnable
 Callable, the call() method needs to be implemented which returns a result on completion. Note that a thread 
 can’t be created with a Callable, it can only be created with a Runnable.
 - Another difference is that the call() method can throw an exception whereas run() cannot.
-- Method signature that has to overridden for implementing Callable.
+- Method signature that has to be overridden for implementing Callable.
     public Object call() throws Exception;
 
 Future
@@ -39,7 +47,55 @@ conveniently.
 the constructor of Thread to create the Thread object. Thus, indirectly, the thread is created with a Callable. For 
 further emphasis, note that there is no way to create the thread directly with a Callable.
 */
+class CallableExample implements Callable {
+    private String name;
+    private String color;
+
+    CallableExample(String name, String color) {
+        this.name = name;
+        this.color = color;
+    }
+
+    @Override
+    public Object call() throws Exception {
+        Random random = new Random();
+        int info = random.nextInt(101);
+
+        Thread.sleep(2000);
+        System.out.println(color + "In " + name + ". Returning: " + info + ".");
+        return info;
+    }
+}
+
 class Concurrency_10_CallableAndFuture {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
+        ExecutorService pool = Executors.newFixedThreadPool(3);
+
+        CallableExample ce1 = new CallableExample("Callable Example 1", ThreadColor.ANSI_YELLOW);
+        CallableExample ce2 = new CallableExample("Callable Example 2", ThreadColor.ANSI_WHITE);
+        CallableExample ce3 = new CallableExample("Callable Example 3", ThreadColor.ANSI_RED);
+        CallableExample ce4 = new CallableExample("Callable Example 4", ThreadColor.ANSI_PURPLE);
+        CallableExample ce5 = new CallableExample("Callable Example 5", ThreadColor.ANSI_GREEN);
+
+        // submit() method allows us get result
+        Future<Integer> future1 = pool.submit(ce1);
+        Future<Integer> future2 = pool.submit(ce2);
+        Future<Integer> future3 = pool.submit(ce3);
+        Future<Integer> future4 = pool.submit(ce4);
+        Future<Integer> future5 = pool.submit(ce5);
+
+        // To get the result, call the Future.get() method. It throws InterruptedException (is thread was interrupted)
+        // and ExecutionException (if the computation threw an exception). This method blocks till result is available.
+        try {
+            System.out.println(ThreadColor.ANSI_RESET + "Future 1: " + future1.get() + 
+                    "\nFuture 2: " + future2.get() + 
+                    "\nFuture 3: " + future3.get() + 
+                    "\nFuture 4: " + future4.get() + 
+                    "\nFuture 5: " + future5.get());
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        pool.shutdown();
     }
 }
