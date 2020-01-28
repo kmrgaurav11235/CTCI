@@ -47,7 +47,7 @@ conveniently.
 the constructor of Thread to create the Thread object. Thus, indirectly, the thread is created with a Callable. For 
 further emphasis, note that there is no way to create the thread directly with a Callable.
 */
-class CallableExample implements Callable {
+class CallableExample implements Callable<Integer> {
     private String name;
     private String color;
 
@@ -57,7 +57,7 @@ class CallableExample implements Callable {
     }
 
     @Override
-    public Object call() throws Exception {
+    public Integer call() throws Exception {
         Random random = new Random();
         int info = random.nextInt(101);
 
