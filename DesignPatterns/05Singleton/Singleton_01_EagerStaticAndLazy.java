@@ -70,17 +70,17 @@ Lazy Initialization
     get the different instances of the singleton class.
 */
 class LazySingleton {
-    private static LazySingleton INSTANCE; // Can't use final because of the if-test
+    private static LazySingleton instance; // Can't use final because of the if-test
 
     //private constructor to avoid client applications to use constructor
     private LazySingleton(){
     }
 
     public static LazySingleton getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new LazySingleton();
+        if (instance == null) {
+            instance = new LazySingleton();
         }
-        return INSTANCE;
+        return instance;
     }
 
 }
