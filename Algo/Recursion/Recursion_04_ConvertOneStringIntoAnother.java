@@ -51,6 +51,7 @@ class Recursion_04_ConvertOneStringIntoAnother {
 		System.out.println("Min Operations (catch, carch) = " + findMinOperations("catch", 0, "carch", 0));
 		System.out.println("Min Operations (table, tbres) = " + findMinOperations("table", 0, "tbres", 0));
 		System.out.println("Min Operations (table, tgable) = " + findMinOperations("table", 0, "tgable", 0));
+		System.out.println("Min Operations (sunday, saturday) = " + findMinOperations("sunday", 0, "saturday", 0));
 
 	}
 }
