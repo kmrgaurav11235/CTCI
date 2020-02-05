@@ -12,18 +12,17 @@ class Recursion_06_LongestCommonSubsequence {
     static int longestCommonSubsequence(String s1, int index1, String s2, int index2) {
         if (index1 == s1.length() || index2 == s2.length()) {
             return 0;
-        } 
-        // Choice 1: Increase the index of 1st string
+        } else if (s1.charAt(index1) == s2.charAt(index2)) {
+            // Choice 1: Increase indices of both strings if you have the same char 
+            return 1 + longestCommonSubsequence(s1, index1 + 1, s2, index2 + 1);
+        }
+        // Choice 2: Increase the index of 1st string
         int firstIndexIncrease = longestCommonSubsequence(s1, index1 + 1, s2, index2);
 
-        // Choice 2: Increase the index of 2nd string
+        // Choice 3: Increase the index of 2nd string
         int secondIndexIncrease = longestCommonSubsequence(s1, index1, s2, index2 + 1);
-        int bothIndicesIncrease = 0;
-        if (s1.charAt(index1) == s2.charAt(index2)) {
-            // Choice 3: Increase indices of both strings if you have the same char 
-            bothIndicesIncrease = 1 + longestCommonSubsequence(s1, index1 + 1, s2, index2 + 1);
-        }
-        return Math.max(firstIndexIncrease, Math.max(secondIndexIncrease, bothIndicesIncrease));
+        
+        return Math.max(firstIndexIncrease, secondIndexIncrease);
     }
 
     public static void main(String[] args) {
