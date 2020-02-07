@@ -7,6 +7,7 @@ import java.util.concurrent.Future;
 
 /*
 https://www.geeksforgeeks.org/callable-future-java/
+https://www.youtube.com/watch?v=lnbWFV4b7M4&list=PLBB24CFB073F1048E&index=13
 - There are two ways of creating threads – one by extending the Thread class and other by creating a thread 
 with a Runnable. However, one feature lacking in  Runnable is that we cannot make a thread return result when 
 it terminates, i.e. when run() completes. For supporting this feature, the Callable interface is present in Java.
