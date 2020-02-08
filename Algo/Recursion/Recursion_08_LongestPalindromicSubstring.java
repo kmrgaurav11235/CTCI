@@ -39,5 +39,7 @@ class Recursion_08_LongestPalindromicSubstring {
             + longestPalindromicSubstring("ABCDCBUA"));
         System.out.println("Length of longest Palindromic Substring in \"FORGEEKSSKEEGFOR\": " 
             + longestPalindromicSubstring("FORGEEKSSKEEGFOR"));
+        System.out.println("Length of longest Palindromic Substring in \"abacdfgdcaba\": " 
+            + longestPalindromicSubstring("abacdfgdcaba"));
     }
 }
