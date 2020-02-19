@@ -9,7 +9,7 @@ Thread Safe Singleton
     is created.
 */
 class DoubleCheckedSingleTon {
-    private static DoubleCheckedSingleTon instance;
+    private static volatile DoubleCheckedSingleTon instance;
 
     private DoubleCheckedSingleTon() {
     }

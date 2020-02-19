@@ -14,7 +14,7 @@ class Point {
     }
     /*
     Now we might want to allow users to initialize Point using polar coordinates too:
-    Point (double rho, double theta, double test) {
+    Point (double rho, double theta) {
         x = rho * Math.cos(theta);
         y = rho * Math.sin(theta);
     }
