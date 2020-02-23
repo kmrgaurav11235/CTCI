@@ -1,3 +1,7 @@
+/*
+https://www.baeldung.com/java-generics
+https://www.journaldev.com/1663/java-generics-example-method-class-interface
+*/
 import java.util.ArrayList;
 
 // We have to create 3 types of players: Football, Cricket and Hockey. Then we have to allow them to form a team.
@@ -104,12 +108,6 @@ class TeamWithGenericsAndBound<T extends Player> {
 
     void addPlayer(T player) {
         if (players.contains(player)) {
-            /* 
-            Since player is now a generic type, we have to cast it before we can access its name.
-            Also, this allows any type of team to be created, e.g. TeamWithGenerics<String> cricketTeam
-            which is invalid as addPlayer() method will throw error.
-            This is not a good code; we will solve this problem next.
-            */
             System.out.println(player.name + " is already in team " + this.name + ".");
         } else {
             players.add(player);
@@ -154,12 +152,6 @@ class ComparableTeamWithGenericsAndBound<T extends Player> implements Comparable
 
     void addPlayer(T player) {
         if (players.contains(player)) {
-            /* 
-            Since player is now a generic type, we have to cast it before we can access its name.
-            Also, this allows any type of team to be created, e.g. TeamWithGenerics<String> cricketTeam
-            which is invalid as addPlayer() method will throw error.
-            This is not a good code; we will solve this problem next.
-            */
             System.out.println(player.name + " is already in team " + this.name + ".");
         } else {
             players.add(player);

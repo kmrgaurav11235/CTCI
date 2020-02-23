@@ -21,21 +21,21 @@ class Recursion_10_NumberOfPathsToReachTheLastCellAtAGivenCost {
     }
 
     static int numberOfPathsToReachLastCellUtil(int[][] cost, int m, int n, int i, int j, int costAvailable) {
-        if (costAvailable < 0) {
+        if (i > m || j > n) {
+            // outside the matrix
+            return 0;
+        } else if (costAvailable < 0) {
             // Exhausted all cost that was permitted: no path found
             return 0;
         } else if (i == m && j == n) {
             // reached last cell
-            if (costAvailable == cost[i][j]) {
+            if (costAvailable >= cost[i][j]) {
                 // reached last cell: with the correct amount of cost: 1 path found
                 return 1;
             } else {
                 // reached last cell: but NOT with the correct amount of cost: no path found
                 return 0;
             }
-        } else if (i > m || j > n) {
-            // outside the matrix
-            return 0;
         }
 
         // Choice 1
@@ -58,7 +58,7 @@ class Recursion_10_NumberOfPathsToReachTheLastCellAtAGivenCost {
         int minCost1 = 8;
 
         System.out.println("Cost Matrix 1: " + toString(cost1));
-        System.out.println("The minimum number of paths with a cost less than " + minCost1 + " are: "
+        System.out.println("The minimum number of paths with a cost less than equal to " + minCost1 + " are: "
                 + numberOfPathsToReachLastCell(cost1, 3, 3, minCost1));
 
         int[][] cost2 = { { 4, 7, 8, 6, 4 }, 
@@ -69,7 +69,7 @@ class Recursion_10_NumberOfPathsToReachTheLastCellAtAGivenCost {
         int minCost2 = 36;
 
         System.out.println("\nCost Matrix 2: " + toString(cost2));
-        System.out.println("The minimum number of paths with a cost less than " + minCost2 + " are: "
+        System.out.println("The minimum number of paths with a cost less than equal to " + minCost2 + " are: "
                 + numberOfPathsToReachLastCell(cost2, 5, 5, minCost2));
 
         int[][] cost3 = { { 4, 7, 1, 6 }, 
@@ -79,7 +79,7 @@ class Recursion_10_NumberOfPathsToReachTheLastCellAtAGivenCost {
         int minCost3 = 25;
 
         System.out.println("\nCost Matrix 3: " + toString(cost3));
-        System.out.println("The minimum number of paths with a cost less than " + minCost3 + " are: "
+        System.out.println("The minimum number of paths with a cost less than equal to " + minCost3 + " are: "
                 + numberOfPathsToReachLastCell(cost3, 4, 4, minCost3));
     }
 }
