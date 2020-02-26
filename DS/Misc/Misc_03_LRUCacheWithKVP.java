@@ -20,6 +20,7 @@ class Misc_03_LRUCacheWithKVP {
         }
 
     }
+
     // Linked List is created from Node. Structure: lru -> A <-> B <-> C <-> D <-> E <- mru
     static class LRUCache<K, V> {
         private int capacity;
@@ -39,7 +40,7 @@ class Misc_03_LRUCacheWithKVP {
         public void display() {
             System.out.print("LRU Cache: [lru -> ");
             Node<K, V> p = lru;
-            while(p != null) {
+            while (p != null) {
                 System.out.print("{ " + p.key + ": " + p.value + " } ");
                 p = p.next;
             }
@@ -105,46 +106,47 @@ class Misc_03_LRUCacheWithKVP {
             }
         }
     }
+
     public static void main(String[] args) {
-        LRUCache<String, String> ca = new LRUCache<>(2); 
+        LRUCache<String, String> ca = new LRUCache<>(2);
         ca.display();
 
-		ca.put("1", "1");
-		System.out.println("get(1): Expected 1, Got: " + ca.get("1"));
-		System.out.println("get(2): Expected null, Got: " + ca.get("2"));
-		ca.put("2", "4");
-		System.out.println("get(1): Expected 1, Got: " + ca.get("1"));
+        ca.put("1", "1");
+        System.out.println("get(1): Expected 1, Got: " + ca.get("1"));
+        System.out.println("get(2): Expected null, Got: " + ca.get("2"));
+        ca.put("2", "4");
+        System.out.println("get(1): Expected 1, Got: " + ca.get("1"));
         System.out.println("get(2): Expected 4, Got: " + ca.get("2"));
         ca.display();
 
         System.out.println("\n*****************\n");
 
-		ca.put("Key1", "Value1");
-		ca.put("Key2", "Value4");
+        ca.put("Key1", "Value1");
+        ca.put("Key2", "Value4");
         ca.put("Key3", "Value9");
         ca.display();
         System.out.println("get(Key1): Expected null, Got: " + ca.get("Key1"));
-		System.out.println("get(Key2): Expected Value4, Got: " + ca.get("Key2"));
+        System.out.println("get(Key2): Expected Value4, Got: " + ca.get("Key2"));
         System.out.println("get(Key3): Expected Value9, Got: " + ca.get("Key3"));
         ca.display();
 
         System.out.println("\n*****************\n");
 
-		ca.put("Key1", "Value1");
-		ca.put("Key2", "Value4");
+        ca.put("Key1", "Value1");
+        ca.put("Key2", "Value4");
         ca.display();
-		System.out.println("get(Key1): Expected Value1, Got: " +ca.get("Key1"));
-		ca.put("Key3", "Value9");
+        System.out.println("get(Key1): Expected Value1, Got: " + ca.get("Key1"));
+        ca.put("Key3", "Value9");
         ca.display();
-		System.out.println("get(Key1): Expected Value1, Got: " +ca.get("Key1"));
-		System.out.println("get(Key2): Expected null, Got: " + ca.get("Key2"));
+        System.out.println("get(Key1): Expected Value1, Got: " + ca.get("Key1"));
+        System.out.println("get(Key2): Expected null, Got: " + ca.get("Key2"));
         System.out.println("get(Key3): Expected Value9, Got: " + ca.get("Key3"));
         ca.display();
         ca.put("Key1", "Value11");
         ca.put("Key4", "Value14");
-		System.out.println("get(Key1): Expected Value11, Got: " +ca.get("Key1"));
-		System.out.println("get(Key4): Expected Value14, Got: " +ca.get("Key4"));
-        System.out.println("get(Key3): Expected null, Got: " +ca.get("Key3"));
+        System.out.println("get(Key1): Expected Value11, Got: " + ca.get("Key1"));
+        System.out.println("get(Key4): Expected Value14, Got: " + ca.get("Key4"));
+        System.out.println("get(Key3): Expected null, Got: " + ca.get("Key3"));
         ca.display();
     }
 }
