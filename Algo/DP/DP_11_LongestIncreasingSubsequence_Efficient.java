@@ -52,8 +52,8 @@ class DP_11_LongestIncreasingSubsequence_Efficient {
                 if (arr[j] < arr[i]) {
                     maxVal = Math.max(maxVal, memo[j]);
                 }
-                memo[i] = maxVal + 1;
             }
+            memo[i] = maxVal + 1;
         }
 
         // Pick maximum of all memo[] values
