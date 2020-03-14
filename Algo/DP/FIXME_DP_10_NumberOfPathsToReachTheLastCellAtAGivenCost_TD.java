@@ -6,7 +6,7 @@ You can only traverse down and right (removed diagonal traversal from this one j
 from a given cell, i.e., from a given cell (i, j), cells (i+1, j) and (i, j+1) can be traversed. 
 You may assume that all costs are positive integers.
 */
-class DP_10_NumberOfPathsToReachTheLastCellAtAGivenCost_TD {
+class FIXME_DP_10_NumberOfPathsToReachTheLastCellAtAGivenCost_TD {
     static String toString(int[][] matrix) {
         StringBuilder stringBuilder = new StringBuilder("\n[\n");
         for (int[] row : matrix) {

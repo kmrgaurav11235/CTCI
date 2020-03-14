@@ -12,7 +12,7 @@ if all the old pages are having same frequency then take last i.e FIFO method fo
 that page.
 */
 
-class Misc_04_LFUCache {
+class FIXME_Misc_04_LFUCache {
     static class LFUNode {
         int index;
         int frequency;
