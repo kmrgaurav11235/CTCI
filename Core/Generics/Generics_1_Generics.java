@@ -175,7 +175,7 @@ class ComparableTeamWithGenericsAndBound<T extends Player> implements Comparable
         return "ComparableTeamWithGenericsAndBound: " + name + " {Points : " + points + "}\n";
     }
 }
-class OUF_1_Generics{
+class Generics_1_Generics{
     public static void main(String[] args) {
         System.out.println("**********  Simple Teams  **********");
         FootballPlayer bhutia = new FootballPlayer("Bhutia");
