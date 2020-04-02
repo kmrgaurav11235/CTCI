@@ -17,6 +17,10 @@ _ Observer Pattern is one of the behavioral design pattern. It is useful when yo
     subscribe and publish data to other applications.
 - Model-View-Controller (MVC) frameworks also use Observer pattern where Model is the Subject and Views are observers 
     that can register to get notified of any change to the model.
+- Observer design pattern is also called as publish-subscribe pattern. Some of it’s implementations are;
+    * java.util.EventListener in Swing
+    * javax.servlet.http.HttpSessionBindingListener
+    * javax.servlet.http.HttpSessionAttributeListener
 */
 import java.util.ArrayList;
 import java.util.List;
