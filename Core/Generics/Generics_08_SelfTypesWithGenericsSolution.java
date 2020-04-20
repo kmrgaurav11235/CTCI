@@ -47,7 +47,7 @@ class EmployeeWithGenericsBuilder extends PersonWithGenericsBuilder<EmployeeWith
     }
 }
 
-class Generics_3_SelfTypesWithGenericsSolution {
+class Generics_08_SelfTypesWithGenericsSolution {
     public static void main(String[] args) {
         PersonType personType = new PersonWithGenericsBuilder()
             .withName("Jason Bourne")

@@ -96,7 +96,7 @@ The problem is that the return type of withName() is explicitly fixed to the cla
 It should, instead, be the type on which the method was called instead of the one that declares it - 'self-type'.
 The solution is in the next file.
 */
-class Generics_2_SelfTypesWithGenerics {
+class Generics_07_SelfTypesWithGenerics {
     public static void main(String[] args) {
         PersonType personType = new PersonWithoutGenericsBuilder()
             .withName("Jason Bourne")
