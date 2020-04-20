@@ -1,6 +1,22 @@
 /*
 https://www.baeldung.com/java-generics
 https://www.journaldev.com/1663/java-generics-example-method-class-interface
+
+- Type parameters can be bounded -- we can restrict types that can be accepted by a method.
+- We can specify that a method accepts a type and all its subclasses (upper bound) or a type all its 
+    superclasses (lower bound).
+- To declare an upper bounded type we use the keyword extends after the type followed by the upper bound 
+    that we want to use. For example:
+    {code}
+    public <T extends Number> List<T> fromArrayToList(T[] a) {
+        ...
+    }
+    {/code}
+- The keyword extends is used here to mean that the type T extends the upper bound in case of a class or 
+    implements an upper bound in case of an interface.
+- Java allows multiple bounds - but normal inheritance rules apply:
+    You can use only single class, but multiple interfaces. Also, list the class first, then interfaces.
+        <T extends Class & Interface1 & Interface2>
 */
 import java.util.ArrayList;
 
@@ -28,19 +44,7 @@ class TeamWithGenericsAndBound<T extends Player> {
     public String toString() {
         return "TeamWithGenericsAndBound: " + name + " {Points : " + points + "}\n";
     }
-}/*
-Notes:
-1. T can extend a class or interface.
-2. Interfaces can have generics too (with or without bound).
-3. Java allows multiple bounds - but normal inheritance rules apply:
-    You can use only single class, but multiple interfaces. Also, list the class first, then interfaces.
-        <T extends Class & Interface1 & Interface2>
-4. We can also pass multiple Type parameters in Generic classes.
-    class Test<T, U> { 
-        T obj1;
-        U obj2;
-    }
-*/
+}
 
 class Generics_02_Bound{
     public static void main(String[] args) {

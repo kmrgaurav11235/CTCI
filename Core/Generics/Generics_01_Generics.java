@@ -1,6 +1,45 @@
 /*
 https://www.baeldung.com/java-generics
 https://www.journaldev.com/1663/java-generics-example-method-class-interface
+
+- Generics was added in Java 5 to provide compile-time type checking and removing risk of ClassCastException 
+    that was common while working with collection classes. The whole collection framework was re-written to 
+    use generics for type-safety.
+- Below code compiles fine but throws ClassCastException at runtime because we are trying to cast Object in 
+    the list to String whereas one of the element is of type Integer.
+    {code}
+    List list = new ArrayList();
+    list.add("abc");
+    list.add(new Integer(5)); //OK
+
+    for(Object obj : list){
+        //type casting leading to ClassCastException at runtime
+        String str = (String) obj; 
+    }
+    {/code}
+- Coding with Generics:
+    {code}
+    List<String> list1 = new ArrayList<String>(); // java 7 ? List<String> list1 = new ArrayList<>(); 
+    list1.add("abc");
+    //list1.add(new Integer(5)); //compiler error
+
+    for(String str : list1){
+        //no type casting needed, avoids ClassCastException
+    }
+    {/code}
+- Notice that at the time of list creation, we have specified that the type of elements in the list will be 
+    String. So if we try to add any other type of object in the list, the program will throw compile-time 
+    error. Also notice that in for loop, we don’t need typecasting of the element in the list, hence removing 
+    the ClassCastException at runtime.
+- We can also pass multiple Type parameters in Generic classes.
+    {code}
+    class Test<T, U> { 
+        T obj1;
+        U obj2;
+    }
+    {/code}
+}
+
 */
 import java.util.ArrayList;
 
@@ -58,9 +97,14 @@ class Team {
 }
 
 /*
-This team has a simple issue. It allows us to form a team using any type of Player object, e.g. a FootballPlayer,
-CricketPlayer and HockeyPlayer can all be a part of single team. This is demonstrated in the main method. To deal with
-this, let us create a better team using Generics.
+- This team has a simple issue. It allows us to form a team using any type of Player object, e.g. a FootballPlayer,
+    CricketPlayer and HockeyPlayer can all be a part of single team. This is demonstrated in the main method. To deal with
+    this, let us create a better team using Generics.
+- We can now define our classes with generics type. A generic type is a class or interface that is parameterized over types. 
+    We use angle brackets (<>) to specify the type parameter. 
+- References to generic type GenericsType<T> should be parameterized. When we don’t provide the type, the type becomes 
+    Object. But, we should always try to avoid this because we will have to use type casting while working on raw type 
+    that can produce runtime errors.
 */
 
 class TeamWithGenerics<T> {
@@ -123,3 +167,17 @@ class Generics_01_Generics{
         invalidStringTeam.addPlayer("test"); 
     }
 }
+/*
+- Java Generic Type Naming convention helps us understanding code easily and having a naming convention is 
+    one of the best practices of Java programming language. So, Generics also comes with its own naming 
+    conventions. 
+- Usually, type parameter names are single, uppercase letters to make it easily distinguishable from java 
+    variables. The most commonly used type parameter names are:
+    * E – Element (used extensively by the Java Collections Framework, for example ArrayList, Set etc.)
+    * K – Key (Used in Map)
+    * N – Number
+    * T – Type
+    * V – Value (Used in Map)
+    * S,U,V etc. – 2nd, 3rd, 4th types
+
+*/
