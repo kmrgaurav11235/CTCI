@@ -8,7 +8,7 @@ In the previous two solution, we did recursion, but there was no backtracking.
 BackTracking:
 Finding solutions by trying partial solutions and abandoning them if they are not suitable.
 - A brute force application technique (tries all path).
-- Often uses recusion.
+- Often uses recursion.
 
 Used for:
 - Producing all permutations of a set of values.
@@ -17,10 +17,10 @@ Used for:
 - Escaping a maze.
 etc.
 
-Psuedo Code:
-Expolore (decisions):
+Pseudo Code:
+Explore (decisions):
     - If there are no more decisions to make, stop.
-    - Else, handle one decision here and rest by recusion. 
+    - Else, handle one decision here and rest by recursion. 
         For each available choice C for this decision:
             - choose C.
             - Explore the remaining choices that could follow C through recusrion.

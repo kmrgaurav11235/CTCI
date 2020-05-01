@@ -49,12 +49,12 @@ public class DP_01_Fibonacci {
   }
   /* 
   Bottom-up Version (tabulation): Builds a solution in bottom-up fashion. Memoization is top-down.  
-  For this we have to figure out the toplogical sort of the sub-problems, so that by the time we solve
+  For this we have to figure out the topological sort of the sub-problems, so that by the time we solve
   a sub-problem, all the sub-problems that it depends upon are already solved.
   This brings another characteristic of DP. The sub-problems should be acyclic. If we start with P(n), and
   get P(n) = x + ... + P(n), we got a cycle. So, we can't solve it using DP. That is why we cannot find
   Single-source shortest path in a Graph with Cycle using DP. Instead we have use Bellman-Ford.
-  Basically, the recurive calls should have a topological order.
+  Basically, the recursive calls should have a topological order.
 
   This version generally saves space as only save the solutions we need. But sometimes, it solves problems
   that we don't need.

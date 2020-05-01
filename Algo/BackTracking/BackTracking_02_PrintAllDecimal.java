@@ -1,5 +1,5 @@
 /*
-Write a program to print all binary numbers of a particular length
+Write a program to print all decimal numbers of a particular length
 Lecture: https://www.youtube.com/watch?v=HvGkzDT2ffI
 */
 class BackTracking_02_PrintAllDecimal {

@@ -12,8 +12,8 @@ class BackTracking_04_DiceSum {
         } 
         for (int i = 1; i <= 6; i++) {
             if (sumLeft > 0) {
-                // sumleft <= 0 will not lead to any solutions:
-                //      1. sumLeft < 0 is obviuos
+                // sumLeft <= 0 will not lead to any solutions:
+                //      1. sumLeft < 0 is obvious
                 //      2. sumLeft == 0 with numOfDiceLeftToRoll != 0 (as checked in base case above) will also not lead to solution.
 
                 // Choose
@@ -33,7 +33,7 @@ class BackTracking_04_DiceSum {
     static void diceSumImprovedUtil (ArrayList<Integer> resultOfDiceRoll, int numOfDiceLeftToRoll, int sumLeft) {
 
         if (numOfDiceLeftToRoll == 0) {
-            // No need to test if sumLeft == 0 as we have already eliminated all those recusrion trees 
+            // No need to test if sumLeft == 0 as we have already eliminated all those recursion trees 
             // that don't allow for solution. As such, any time we reach leaf node, it must be a solution.
             System.out.print(resultOfDiceRoll + " ");
             return;
@@ -62,7 +62,7 @@ class BackTracking_04_DiceSum {
         System.out.println("All rolls with 2 dice and sum 7:");
         diceSum(2, 7); 
 
-        System.out.println("\n\nAll rolls with 2 dice and sum 7 with improved algo:");
+        System.out.println("\n\nAll rolls with 2 dice and sum 7 with improved algorithm:");
         diceSumImproved(2, 7);     
     }
 }

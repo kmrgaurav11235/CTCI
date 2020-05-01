@@ -20,7 +20,7 @@ class BackTracking_06_SubLists {
         - Backtrack - Remove it from 'selected' and add it to 'remaining'.
     
     But, this is a bad solution as it takes 'Order of elements' in account, e.g. it will print {Bob, Matt} and 
-    {Matt, Bob} seperately.
+    {Matt, Bob} separately.
 
     A better Decision tree will be based on whether an element is to be included or not:
     

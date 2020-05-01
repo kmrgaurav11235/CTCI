@@ -68,8 +68,8 @@ class BackTracking_05_PermutationsOfString {
         System.out.println("Permutations of string = " + str + ":");
         permute(str); 
 
-        // Instead of actually seperating the string into two strings, we can instead use
-        // a marker variable to create virtual seperation
+        // Instead of actually separating the string into two strings, we can instead use
+        // a marker variable to create virtual separation
         System.out.println("\n\nPermutations of string = " + str + " (alternative method):");
         permuteAliter(str); 
     }
