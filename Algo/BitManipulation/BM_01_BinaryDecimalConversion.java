@@ -32,13 +32,13 @@ public class BM_01_BinaryDecimalConversion {
     }
 
     static String decimalToBinary(int decimal) {
-        String suffix = "";
+        String prefix = "";
         if (decimal > 1) {
-            suffix = decimalToBinary(decimal / 2);
+            prefix = decimalToBinary(decimal / 2);
             // bitwise operator: The above can also be replaced by:
             // suffix = decimalToBinary(decimal >> 1);
         }
-        int prefix = decimal % 2;
+        int suffix = decimal % 2;
         return prefix + suffix;
     }
     public static void main(String[] args) {
