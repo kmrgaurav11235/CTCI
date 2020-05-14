@@ -19,7 +19,7 @@ class Sorting_02_BubbleSort {
 
             boolean hasExchangeHappened = false;
             for (int j = 0; j < n - 1 - i; j++) {
-                // Iterate till second-to-last - i, as the last i elements have already 'sinked' to their place.
+                // Iterate till second-to-last - i, as the last i elements have already 'sunk' to their place.
                 if (a[j] > a[j + 1]) {
                     // Swap
                     int temp = a[j];

@@ -14,8 +14,8 @@ two halves and then merges the two sorted halves. The merge() function is used f
     in the linked list, we can insert items in the middle in O(1) extra space and O(1) time. Therefore merge 
     operation of merge sort can be implemented without extra space for linked lists. 
 - In arrays, we can do random access as elements are contiguous in memory. Unlike arrays, we can not do random 
-    access in the linked list. Quick Sort requires a lot of this kind of access. In linked list to access i’th 
-    index, we have to travel each and every node from the head to i’th node as we don’t have a continuous block 
+    access in the linked list. Quick Sort requires a lot of this kind of access. In linked list to access i-th 
+    index, we have to travel each and every node from the head to i-th node as we don’t have a continuous block 
     of memory. Therefore, the overhead increases for quicksort. Merge sort accesses data sequentially and the 
     need of random access is low. 
 */

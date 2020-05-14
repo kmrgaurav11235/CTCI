@@ -16,7 +16,7 @@ https://www.geeksforgeeks.org/selection-sort/
 */
 class Sorting_03_SelectionSort {
     static void selectionSort(int [] a, int n) {
-        // One by one move boundary of unsorted subarray
+        // One by one move boundary of unsorted sub-array
         for (int i = 0; i < n; i++) {
             int minIndex = i;
             for (int j = i + 1; j < n; j++) {

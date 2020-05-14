@@ -16,7 +16,7 @@ before x, and put all greater elements (greater than x) after x. All this should
 - Worst Case: The worst case occurs when the partition process always picks greatest or smallest element 
     as pivot. If we consider above partition strategy where last element is always picked as pivot, the 
     worst case would occur when the array is already sorted in increasing or decreasing order. This takes
-    n ^ 2 time..
+    n ^ 2 time.
 - Best Case: The best case occurs when the partition process always picks the middle element as pivot. This
     takes n * log n time.
 - Average Case: To do average case analysis, we need to consider all possible permutation of array and calculate 
@@ -24,7 +24,7 @@ before x, and put all greater elements (greater than x) after x. All this should
     the case when partition puts O(n/9) elements in one set and O(9n/10) elements in other set. Following is 
     recurrence for this case.
     T(n) = T(n/9) + T(9n/10)
-    Solution of above recurrence is also O(n * Logn)
+    Solution of above recurrence is also O(n * log n)
 - Although the worst case time complexity of QuickSort is O(n ^ 2) which is more than many other sorting algorithms 
     like Merge Sort and Heap Sort, QuickSort is faster in practice, because its inner loop can be efficiently 
     implemented on most architectures, and in most real-world data. QuickSort can be implemented in different ways by 

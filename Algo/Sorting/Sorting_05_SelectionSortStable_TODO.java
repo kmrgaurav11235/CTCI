@@ -2,7 +2,7 @@ import java.util.Arrays;
 /*
 https://www.geeksforgeeks.org/stable-selection-sort/
 */
-class Sorting_05_SelectionSortStable {
+class Sorting_05_SelectionSortStable_TODO {
     static void stableSelectionSort(int [] a, int n) {
     }
     public static void main(String[] args) {
