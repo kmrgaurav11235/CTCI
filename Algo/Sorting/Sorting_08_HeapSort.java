@@ -1,6 +1,8 @@
 import java.util.Arrays;
 /*
 https://www.geeksforgeeks.org/heap-sort/
+https://www.programiz.com/dsa/heap-sort
+
 - Heap sort is a comparison based sorting technique based on Binary Heap data structure. 
 - Heap sort is an in-place algorithm.
 - Its typical implementation is not stable, but can be made stable.
