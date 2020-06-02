@@ -2,7 +2,7 @@
 import java.util.Iterator;
 import java.util.LinkedList;
 
-class Graph_09_SSSP_DijkstraAdjList {
+class GA_02_SSSP_DijkstraAdjList {
     static class AdjacencyListNode {
         int destination;
         int weight;

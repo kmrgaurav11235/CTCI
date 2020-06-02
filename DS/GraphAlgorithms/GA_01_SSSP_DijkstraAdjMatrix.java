@@ -1,5 +1,5 @@
 // https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
-class Graph_09_SSSP_DijkstraAdjMatrix {
+class GA_01_SSSP_DijkstraAdjMatrix {
     static class Graph {
         int numVertices;
         int[][] adjMatrix;

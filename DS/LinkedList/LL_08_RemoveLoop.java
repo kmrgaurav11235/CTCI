@@ -115,7 +115,7 @@ public class LL_08_RemoveLoop {
         if (lList1.detectAndRemoveLoop()) {
             System.out.println("Linked List after removing loop: " + lList1); 
         } else {
-            System.out.println("No loop found in list: " + lList1);
+            System.out.println("No loop found in list 1: " + lList1);
         }
 
         LinkedList lList2 = new LinkedList(); 
@@ -126,14 +126,14 @@ public class LL_08_RemoveLoop {
         lList2.head.next.next.next.next = new Node(10); 
   
         // Creating a loop for testing 
-        System.out.println("Linked list: " + lList2);
+        System.out.println("\nLinked list 2: " + lList2);
         lList2.head.next.next.next.next.next = lList2.head.next.next; 
-        System.out.println("Added Loop to Linked list.");
+        System.out.println("Added Loop to Linked list 2.");
 
         if (lList2.detectAndRemoveLoop()) {
-            System.out.println("Linked List after removing loop: " + lList2); 
+            System.out.println("Linked List 2 after removing loop: " + lList2); 
         } else {
-            System.out.println("No loop found in list: " + lList2);
+            System.out.println("No loop found in list 2: " + lList2);
         }
     }
 }

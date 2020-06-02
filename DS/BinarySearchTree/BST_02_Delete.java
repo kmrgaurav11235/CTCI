@@ -125,7 +125,7 @@ class BST_02_Delete {
                     node.data = inOrderSuccessor;
                     deleteUtil(node.right, inOrderSuccessor);
                     /*
-                    Instead of seaching inOrder successor in one recursion call and then deleting 
+                    Instead of searching inOrder successor in one recursion call and then deleting 
                     it in another, we can also do both in the same while loop by keeping track of
                     its parent.
                     */
