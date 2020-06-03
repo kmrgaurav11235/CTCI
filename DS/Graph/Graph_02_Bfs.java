@@ -1,3 +1,13 @@
+/*
+https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
+
+- Breadth First Traversal (or Search) for a graph is similar to Breadth First Traversal of a 
+    tree. The only catch here is, unlike trees, graphs may contain cycles, so we may come to 
+    the same node again. 
+- To avoid processing a node more than once, we use a boolean visited array.
+- Time Complexity: O(V+E) 
+    where V is number of vertices in the graph and E is number of edges in the graph.
+*/
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;

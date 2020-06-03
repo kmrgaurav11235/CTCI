@@ -1,4 +1,12 @@
-// https://www.geeksforgeeks.org/dijkstras-algorithm-for-adjacency-list-representation-greedy-algo-8/
+/* 
+https://www.geeksforgeeks.org/dijkstras-algorithm-for-adjacency-list-representation-greedy-algo-8/
+
+- Here we have used a simple loop in getClosestTemporaryVertex() method. A better way is to use a Min Heap.
+- The time complexity of the algorithm looks O(V^2) as there are two nested loops. If we take a closer look, 
+    we can observe that the statements in inner loop are executed O(V+E) times (similar to BFS). The inner 
+    loop can use a Heap decreaseKey() operation which takes O(LogV) time. 
+- So overall time complexity is O(E+V) * O(LogV) which is O((E+V) * LogV) = O(E LogV)
+*/
 import java.util.Iterator;
 import java.util.LinkedList;
 

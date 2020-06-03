@@ -1,3 +1,20 @@
+/*
+https://www.geeksforgeeks.org/detect-cycle-undirected-graph/
+
+- Detect cycle in an undirected graph: 
+    Run a DFS from every unvisited node. DFS for a connected graph produces a tree. There is 
+    a cycle in a graph only if there is a back edge present in the graph. A back edge is an 
+    edge that is joining a node to itself (self-loop) or one of its ancestor in the tree produced 
+    by DFS.
+- To find the back edge to any of its ancestor keep a visited array and if there is a back edge 
+    to any visited node then there is a loop and return true.
+- Complexity Analysis:
+    * Time Complexity: O(V+E).
+        The program does a simple DFS Traversal of the graph which is represented using adjacency 
+        list. So the time complexity is O(V+E).
+    * Space Complexity: O(V).
+        To store the visited array O(V) space is required.
+*/
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -50,7 +67,7 @@ class Graph_05_CycleInUnDirectedGraph{
                     }
                 } // isVisited[vertex] == true is implicit when flow reaches else.
                 else if (newVertex != parent) {
-                    // We havr already reached newVertex. Also, newVertex is not the parent.
+                    // We have already reached newVertex. Also, newVertex is not the parent.
                     // So, loop is present.
                     return true;
                 }

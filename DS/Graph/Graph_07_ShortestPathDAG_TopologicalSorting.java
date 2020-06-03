@@ -1,8 +1,24 @@
 /*
-Shortest Path Algorithms: 
-Single Source shortest path for any Graph (with or without negative weights) -> Bellman-Ford
-Single Source shortest path for Graph without negative weights -> Dijkstra
-Single Source shortest path for DAG (with or without negative weights) -> Using Topological Sort
+https://www.geeksforgeeks.org/shortest-path-for-directed-acyclic-graphs/
+- Given a Weighted Directed Acyclic Graph and a source vertex in the graph, find the shortest 
+    paths from given source to all other vertices.
+- Shortest Path Algorithms: 
+    * Single Source shortest path for any Graph (with or without negative weights) -> Bellman-Ford. 
+        Time:  O(VE).
+    * Single Source shortest path for Graph without negative weights -> Dijkstra. We can reduce the 
+        time to: O(E + VLogV).
+    * Single Source shortest path for DAG (with or without negative weights) -> Topological Sort. 
+        We can reduce the time even further: O(V+E).
+- To find the single-source shortest distances for this Graph, we will do the following:
+    1. Topologically sort the Graph.
+    2. Set dis[node] = INFINITY for all nodes.
+    3. Set dis[source] = 0
+    4. Go through the topologically sorted list and set the shortest distance for each adjacent node 
+        using distance of current vertex.
+
+        for every adjacent vertex adjacentNode of node
+            if dis[node] != INF && ( dis[adjacentNode] > dis[node] + weight[node, adjacentNode] )
+                dis[adjacentNode] = dis[node] + weight[node, adjacentNode]
 */
 
 import java.util.Deque;
@@ -81,15 +97,6 @@ class Graph_07_ShortestPathDAG_TopologicalSorting {
             stack.push(vertex);
         }
 
-        /*
-        To find the single-source shortest distances for this Graph, we will do the following:
-        1. Topologically sort the Graph.
-        2. Set dis[node] = INFINITY for all nodes.
-        3. Set dis[source] = 0
-        4. Go through the topologically sorted list and set the shortest distance for each node:
-            if dis[node] != INF && dis[adjacent node] > dis[node] + weight[adjacent node]
-                dis[adjacent node] = dis[node] + weight[adjacent node]
-        */
         void shortestPath(int source) {
             // First do topological sorting
             boolean isVisited[] = new boolean[v];

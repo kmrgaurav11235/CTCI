@@ -1,8 +1,29 @@
 /*
-Topological Sorting sorts the vertices of a Directed Acyclic Graph (DAG) in such a way that for 
-every edge uv in the graph, u comes before v in the sorted list.
-Topological Sorting is not possible if the Graph in not directed and acyclic.
-A number of different topological sorts are generally possible for a single DAG.
+https://www.geeksforgeeks.org/topological-sorting/
+- Topological Sorting: Topological sorting for Directed Acyclic Graph (DAG) is a linear ordering 
+    of vertices such that for every directed edge uv, vertex u comes before v in the ordering. 
+- Topological Sorting for a graph is not possible if the graph is not a DAG.
+- There can be more than one topological sorting for a graph.
+- The first vertex in topological sorting is always a vertex with in-degree as 0 (a vertex with 
+    no incoming edges).
+- Topological Sorting vs Depth First Traversal (DFS):
+    In DFS, we print a vertex and then recursively call DFS for its adjacent vertices. In 
+    topological sorting, we need to print a vertex before its adjacent vertices. 
+- We can modify DFS to find Topological Sorting of a graph. In topological sorting, we use a 
+    temporary stack. We don’t print the vertex immediately, we first recursively call topological 
+    sorting for all its adjacent vertices, then push it to a stack. Finally, print contents of 
+    stack. 
+- Note that a vertex is pushed to stack only when all of its adjacent vertices (and their adjacent 
+    vertices and so on) are already in stack. 
+- Complexity Analysis:
+    * Time Complexity: O(V+E).
+        The algorithm is simply DFS with an extra stack. So time complexity is the same as DFS which is.
+    * Auxiliary space: O(V).
+        The extra space is needed for the stack.
+- Applications: Topological Sorting is mainly used for scheduling jobs from the given dependencies 
+    among jobs. In computer science, applications of this type arise in instruction scheduling, determining 
+    the order of compilation tasks to perform in make-files, data serialization, and resolving symbol 
+    dependencies in linkers.
 */
 import java.util.Deque;
 import java.util.Iterator;
@@ -29,13 +50,7 @@ class Graph_06_TopologicalSorting {
             }
             return false;
         }
-
-        /*
-        Topological Sorting is similar to DFS. In DFS, we visit every vertex, print it and then call DFS on its adjacent vertex.
-        In Topological Sorting we use a stack. We first call Topological Sort on all adjacent vertex, then push the vertex in stack.
-        This ensures that a vertex is pushed in the stack only after all the adjacent vertices are already in the stack. At the end,
-        we empty the stack to get the sorted list.
-        */
+        
         void topologicalSortUtil(int vertex, boolean [] isVisited, Deque<Integer> stack) {
             if (isVisited[vertex]) {
                 return;

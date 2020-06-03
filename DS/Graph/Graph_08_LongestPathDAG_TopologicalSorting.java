@@ -1,5 +1,30 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+/*
+https://www.geeksforgeeks.org/find-longest-path-directed-acyclic-graph/
+- Given a Weighted Directed Acyclic Graph (DAG) and a source vertex s in it, find the longest 
+    distances from s to all other vertices in the given graph.
+- The longest path problem for a general graph is not as easy as the shortest path problem because 
+    the longest path problem doesn’t have optimal substructure property. In fact, the Longest Path 
+    problem is NP-Hard for a general graph. 
+- However, the longest path problem has a linear time solution for directed acyclic graphs. The idea 
+    is similar to linear time solution for shortest path in a directed acyclic graph., we use 
+    Topological Sorting.
+- We initialize distances to all vertices as minus infinite and distance to source as 0, then we find 
+    a topological sorting of the graph. Topological Sorting of a graph represents a linear ordering of 
+    the graph. 
+- Once we have topological order (or linear representation), we one by one process all vertices in 
+    topological order. For every vertex being processed, we update distances of its adjacent using 
+    distance of current vertex.
+- Algorithm:
+    1. Topologically sort the Graph.
+    2. Set dis[node] = NEGATIVE_INFINITY for all nodes.
+    3. Set dis[source] = 0
+    4. Go through the topologically sorted list and set the shortest distance for each adjacent node 
+        using distance of current vertex.
+
+        for every adjacent vertex adjacentNode of node
+            if dis[node] != NEGATIVE_INFINITY && ( dis[adjacentNode] < dis[node] + weight[node, adjacentNode] )
+                dis[adjacentNode] = dis[node] + weight[node, adjacentNode]
+*/
 import java.util.Deque;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -78,7 +103,7 @@ class Graph_08_LongestPathDAG_TopologicalSorting {
 
         /*
         Same as single-source shortest path algorithm except 2 changes:
-        1. Set dis[node] = NEGATIVE_INFINITY for all nodes initally.
+        1. Set dis[node] = NEGATIVE_INFINITY for all nodes initially.
         2. If condition reverses:
             if dis[node] != NEGATIVE_INFINITY && dis[adjacent node] < dis[node] + weight[adjacent node]
                 dis[adjacent node] = dis[node] + weight[adjacent node]

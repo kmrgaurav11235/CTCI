@@ -1,3 +1,28 @@
+/*
+https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+
+- Detect Cycle in a Directed Graph: 
+    Depth First Traversal can be used to detect a cycle in a Graph. There is a cycle in a graph only if 
+    there is a back edge present in the graph. A back edge is an edge that is from a node to itself 
+    (self-loop) or one of its ancestors in the tree produced by DFS. 
+- To detect a back edge, keep track of vertices currently in the recursion stack of function for DFS 
+    traversal. If a vertex is reached that is already in the recursion stack, then there is a cycle in the 
+    graph. The edge that connects the current vertex to the vertex in the recursion stack is a back edge.
+- Algorithm:
+    1) Create the graph using the given number of edges and vertices.
+    2) Create a recursive function that initializes the current index, visited array and recursion stack.
+    3) Mark the current node as visited and also mark the index in recursion stack.
+    4) Find all the vertices which are not visited and are adjacent to the current node. Recursively call 
+        the function for those vertices. If the recursive function returns true, return true.
+    5) If the adjacent vertices are already marked in the recursion stack then return true.
+- Complexity
+    * Time Complexity: O(V+E).
+        Time Complexity of this method is same as time complexity of DFS traversal which is O(V+E).
+    * Space Complexity: O(V). 
+        To store the visited and recursion stack O(V) space is needed.
+
+*/
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
