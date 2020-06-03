@@ -1,8 +1,7 @@
 import java.util.*;
-import java.lang.*;
 import java.io.*;
 
-class GFG {
+class InputOutputSample {
     static class FastReader
     {
         BufferedReader br;
