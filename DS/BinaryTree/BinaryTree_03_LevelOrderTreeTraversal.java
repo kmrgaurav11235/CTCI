@@ -1,3 +1,16 @@
+/*
+https://www.geeksforgeeks.org/level-order-tree-traversal/
+
+- For each node, first the node is visited and then it’s child nodes are put in a FIFO queue.
+
+printLevelorder(tree)
+    1) Create an empty queue q
+    2) tempNode = root
+    3) Loop while tempNode is not NULL
+        a) print tempNode->data.
+        b) Enqueue tempNode's children (first left then right children) to q.
+        c) Dequeue a node from q and assign it’s value to tempNode.
+*/
 import java.util.Deque;
 import java.util.LinkedList;
 

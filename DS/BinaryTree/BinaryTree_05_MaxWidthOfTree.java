@@ -1,6 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-
 /*
 Given a binary tree, write a function to get the maximum width of the given tree. Width of a tree is maximum of widths of all levels.Let us consider the below example tree.
 
@@ -19,6 +16,9 @@ width of level 4 is 2.
 
 So the maximum width of the tree is 3.
 */
+import java.util.HashMap;
+import java.util.Map;
+
 public class BinaryTree_05_MaxWidthOfTree {
     static class Node {
         int data;

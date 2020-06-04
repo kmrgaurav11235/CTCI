@@ -1,3 +1,23 @@
+/*
+https://www.geeksforgeeks.org/write-a-c-program-to-find-the-maximum-depth-or-height-of-a-tree/
+
+- Recursively calculate height of left and right subtrees of a node and assign height to the node as 
+    max of the heights of two children plus 1. 
+- Algorithm:
+    1. If tree is empty then return 0
+    2. Else
+        a) Get the height of left subtree recursively  i.e., 
+            call getHeight(tree->left-subtree)
+        a) Get the height of right subtree recursively  i.e., 
+            call getHeight(tree->right-subtree)
+        c) Get the max of height of left and right 
+            subtrees and add 1 to it for the current node.
+            height = max(height of left subtree,  
+                                height of right subtree) 
+                                + 1
+        d) Return height
+
+*/
 public class BinaryTree_04_HeightOfTree {
     static class Node {
         int data;

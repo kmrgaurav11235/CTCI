@@ -1,3 +1,20 @@
+/*
+https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/
+
+- Trees can be traversed in different ways:
+         1
+        /  \
+       2    3
+     /  \ 
+    4    5 
+
+    1. Depth First Traversals:
+        a) Preorder (Root, Left, Right) : 1 2 4 5 3
+        b) Inorder (Left, Root, Right) : 4 2 5 1 3
+        c) Postorder (Left, Right, Root) : 4 5 2 3 1
+    2. Breadth First or Level Order Traversal : 1 2 3 4 5
+
+*/
 public class BinaryTree_01_TreeTraversals {
     static class Node {
         int data;

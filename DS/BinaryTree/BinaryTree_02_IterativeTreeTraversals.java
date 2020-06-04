@@ -1,3 +1,74 @@
+/*
+https://www.geeksforgeeks.org/iterative-preorder-traversal/
+https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/
+https://www.geeksforgeeks.org/iterative-postorder-traversal/
+https://www.geeksforgeeks.org/iterative-postorder-traversal-set-3/
+
+- Preorder: To convert an inherently recursive procedures to iterative, we need an explicit stack. 
+    Following is a simple stack based iterative process to print Preorder traversal:
+        1) Create an empty stack nodeStack and push root node to stack.
+        2) Do following while nodeStack is not empty.
+            a) Pop an item from stack and print it.
+            b) Push right child of popped item to stack
+            c) Push left child of popped item to stack
+
+    Right child is pushed before left child to make sure that left subtree is processed first.
+
+- Inorder: 
+    1) Create an empty stack S.
+    2) Initialize current node as root
+    3) Push the current node to S and set current = current->left until current is NULL
+    4) If current is NULL and stack is not empty then 
+        a) Pop the top item from stack.
+        b) Print the popped item, set current = popped_item->right 
+        c) Go to step 3.
+    5) If current is NULL and stack is empty then we are done.
+
+- Postorder Traversal Using Two Stacks:
+    Postorder traversal can easily be done using two stacks. The idea is to push reverse postorder 
+    traversal to a stack. Once we have the reversed postorder traversal in a stack, we can just pop 
+    all items one by one from the stack and print them. This order of printing will be in postorder 
+    because of the LIFO property of stacks. 
+- Now the question is, how to get reversed postorder elements in a stack – the second stack is used 
+    for this purpose. If take a closer look at reverse-postorder sequence, we can observe that it is 
+    very similar to the preorder traversal. The only difference is that the right child is visited before 
+    left child, and therefore the sequence is “root right left” instead of “root left right”. So, we 
+    can do something like iterative preorder traversal with the following differences:
+    a) Instead of printing an item, we push it to a stack.
+    b) We push the left subtree before the right subtree.
+- Complete algorithm:
+    1) Push root to first stack.
+    2) Loop while first stack is not empty
+        a) Pop a node from first stack and push it to second stack
+        b) Push left and right children of the popped node to first stack
+    3) Print contents of second stack
+
+- Postorder traversal on a Binary Tree iteratively using a single stack:
+
+- Consider the Below Terminologies:
+    0 -  Left element
+    1 -  Right element
+    2 -  Node element
+
+- Detailed algorithm:
+    Take a Stack and perform the below operations:
+    1) Insert a pair of the root node as (node, 0).
+    2) Pop the top element to get the pair 
+    (Let a = node and b be the variable)
+        a) If b is equal to 0:
+            Push another pair as (node, 1) and 
+            Push the left child as (node->left, 0)
+            Repeat Step 2
+        b) Else If b is equal to 1:
+            Push another pair as (node, 2) and 
+            Push right child of node as (node->right, 0)
+            Repeat Step 2
+        c) Else If b is equal to 2:
+            Print(node->data)
+    3) Repeat the above steps while stack is not empty
+
+
+*/
 import java.util.Deque;
 import java.util.LinkedList;
 
