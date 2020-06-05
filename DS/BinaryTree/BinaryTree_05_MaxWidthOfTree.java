@@ -1,5 +1,8 @@
 /*
-Given a binary tree, write a function to get the maximum width of the given tree. Width of a tree is maximum of widths of all levels.Let us consider the below example tree.
+https://www.geeksforgeeks.org/maximum-width-of-a-binary-tree/
+
+- Given a binary tree, write a function to get the maximum width of the given tree. Width 
+    of a tree is maximum of widths of all levels.Let us consider the below example tree.
 
          1
         /  \
@@ -8,13 +11,25 @@ Given a binary tree, write a function to get the maximum width of the given tree
     4    5     8 
               /  \
              6    7
-For the above tree,
-width of level 1 is 1,
-width of level 2 is 2,
-width of level 3 is 3
-width of level 4 is 2.
+    For the above tree,
+    width of level 1 is 1,
+    width of level 2 is 2,
+    width of level 3 is 3
+    width of level 4 is 2.
+    So the maximum width of the tree is 3.
 
-So the maximum width of the tree is 3.
+- Using Preorder Traversal:
+- We create a temporary map levelToWidthMap. 
+- We, then, traverse the tree using preorder traversal and fill the entries in count so that the 
+    map contains count of nodes at each level in Binary Tree.
+
+- Alternative - Using Queue:
+- We store all the child nodes at the current level in the queue and then count the total number 
+    of nodes after the level order traversal for a particular level is completed. 
+- Since the queue now contains all the nodes of the next level, we can easily find out the total 
+    number of nodes in the next level by finding the size of queue. 
+- We then follow the same procedure for the successive levels. We store and update the maximum number 
+    of nodes found at each level.
 */
 import java.util.HashMap;
 import java.util.Map;
