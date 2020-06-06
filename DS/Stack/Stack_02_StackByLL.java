@@ -1,5 +1,11 @@
 /*
 https://www.geeksforgeeks.org/stack-data-structure-introduction-program/
+
+- Implementing Stack using Linked List:
+    * Pros: The linked list implementation of stack can grow and shrink according to the 
+        needs at runtime.
+    * Cons: Requires extra memory due to involvement of pointers.
+
 */
 
 class Stack_02_StackByLL {
