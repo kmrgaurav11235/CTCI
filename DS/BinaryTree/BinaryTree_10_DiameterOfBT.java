@@ -1,4 +1,25 @@
 /*
+https://www.geeksforgeeks.org/diameter-of-a-binary-tree/
+- The diameter of a tree (sometimes called the width) is the number of nodes on the longest 
+    path between two end nodes.
+
+        Tree T
+              26
+            /   \
+          10     3
+        /    \     \
+      4       6      3
+       \
+        30
+
+- The diagram above shows a tree with diameter 6, the nodes that form the longest path are:
+    30 - 4 - 10 - 26 - 3 - 3
+- The diameter of a tree T is the largest of the following quantities:
+    * the diameter of T’s left subtree
+    * the diameter of T’s right subtree
+    * the longest path between leaves that goes through the root of T (this can be computed 
+        from the heights of the subtrees of T) 
+
 */
 public class BinaryTree_10_DiameterOfBT {
     static class Node {
