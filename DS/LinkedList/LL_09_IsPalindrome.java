@@ -100,20 +100,23 @@ public class LL_09_IsPalindrome {
 
             Node midNode = null;
             /* 
-            fast would become null when there are even elements in the list and not null for 
-            odd elements. We need to skip the middle node for odd case and store it somewhere 
-            so that we can restore the original list
+            'fast' would become null when there are even elements in the list and not null for 
+            odd elements. We need to skip the middle node for odd case and store it in 'midNode' 
+            so that we can restore the original list.
             */
             if (fast != null) {
                 midNode = slow;
                 slow = slow.next;
             }
 
+            // null terminate first half 
             prevSlow.next = null;
             Node secondHalf = slow;
 
+            // reverse the second half and compare it with first half 
             Node secondHalfReversed = reverse(secondHalf);
             boolean isPalindrome = isIdentical(head, secondHalfReversed);
+            // Construct the original list back
             Node secondHalfCorrected = reverse(secondHalfReversed);
 
             if (midNode == null) {
