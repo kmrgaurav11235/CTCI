@@ -49,7 +49,7 @@ public class LL_05_ReverseK {
             return sb.toString();
         }
 
-        static Node reverse(Node head, int k) {
+        Node reverse(Node head, int k) {
             if (head == null || head.next == null) {
                 return head;
             }
@@ -68,8 +68,7 @@ public class LL_05_ReverseK {
             return prev;
         }
     }
-    public static void main(String args[]) 
-    { 
+    public static void main(String args[]) { 
         LinkedList lList = new LinkedList(); 
         // Constructed Linked List is 1->2->3->4->5->6-> 7->8->8->9->10->null
         lList.push(10); 
