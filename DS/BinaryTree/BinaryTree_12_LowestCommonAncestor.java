@@ -2,7 +2,7 @@
 https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
 - Given a binary tree and two values say n1 and n2, write a program to find the Lowest 
     Common Ancestor.
-- Definition of LCA from Wikipedia:
+- Definition of LCA:
     Let T be a rooted tree. The Lowest Common Ancestor of two nodes n1 and n2 is defined 
     as the lowest node in T that has both n1 and n2 as descendants (where we allow a node 
     to be a descendant of itself).
