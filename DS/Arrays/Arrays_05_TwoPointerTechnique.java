@@ -23,7 +23,7 @@ https://www.geeksforgeeks.org/two-pointers-technique/
     Find a triplet such that sum of two equals to third element
     Find four elements that sum to a given value
 */
-class Misc_01_TwoPointerTechnique {
+class Arrays_05_TwoPointerTechnique {
     private static void displayPairSumIndices(int[] sortedArray, int requiredSum) {
         int left = 0, right = sortedArray.length - 1;
         while(left < right) {
