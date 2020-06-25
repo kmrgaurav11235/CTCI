@@ -24,7 +24,7 @@ https://www.geeksforgeeks.org/check-if-a-binary-tree-is-subtree-of-another-binar
         30
 
 */
-public class BinaryTree_09_SubtreeOfAnotherTree {
+public class BTCP_01_SubtreeOfAnotherTree {
     static class Node {
         int data;
         Node left, right;

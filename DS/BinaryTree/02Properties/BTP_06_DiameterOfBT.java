@@ -21,7 +21,7 @@ https://www.geeksforgeeks.org/diameter-of-a-binary-tree/
         from the heights of the subtrees of T) 
 
 */
-public class BinaryTree_10_DiameterOfBT {
+public class BTP_06_DiameterOfBT {
     static class Node {
         int data;
         Node left, right;

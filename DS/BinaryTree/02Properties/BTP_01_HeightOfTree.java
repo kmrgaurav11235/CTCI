@@ -18,7 +18,7 @@ https://www.geeksforgeeks.org/write-a-c-program-to-find-the-maximum-depth-or-hei
         d) Return height
 
 */
-public class BinaryTree_04_HeightOfTree {
+public class BTP_01_HeightOfTree {
     static class Node {
         int data;
         Node left, right;

@@ -45,7 +45,7 @@ https://www.geeksforgeeks.org/zig-zag-level-order-traversal-of-a-tree-using-sing
 import java.util.Deque;
 import java.util.LinkedList;
 
-class BinaryTree_06_LevelOrderTraversalSpiral {
+class BTT_04_LevelOrderTraversalSpiral {
     static class Node {
         int data;
         Node left, right;

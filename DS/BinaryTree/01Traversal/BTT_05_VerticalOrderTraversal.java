@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-class BinaryTree_07_VerticalOrderTraversal {
+class BTT_05_VerticalOrderTraversal {
     static class Node {
         int data;
         Node left, right;

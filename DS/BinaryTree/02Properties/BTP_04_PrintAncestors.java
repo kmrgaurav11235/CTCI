@@ -14,7 +14,7 @@ https://www.geeksforgeeks.org/print-ancestors-of-a-given-node-in-binary-tree/
     7
 
 */
-public class BinaryTree_08_PrintAncestors {
+public class BTP_04_PrintAncestors {
     static class Node {
         int data;
         Node left, right;

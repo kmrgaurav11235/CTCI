@@ -14,7 +14,7 @@ printLevelorder(tree)
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class BinaryTree_03_LevelOrderTreeTraversal {
+public class BTT_03_LevelOrderTreeTraversal {
     static class Node {
         int data;
         Node left, right;

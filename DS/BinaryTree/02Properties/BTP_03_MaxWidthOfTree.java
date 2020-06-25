@@ -34,7 +34,7 @@ https://www.geeksforgeeks.org/maximum-width-of-a-binary-tree/
 import java.util.HashMap;
 import java.util.Map;
 
-public class BinaryTree_05_MaxWidthOfTree {
+public class BTP_03_MaxWidthOfTree {
     static class Node {
         int data;
         Node left, right;

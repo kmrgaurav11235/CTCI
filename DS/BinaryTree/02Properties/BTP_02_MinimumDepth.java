@@ -24,7 +24,7 @@ https://www.geeksforgeeks.org/find-minimum-depth-of-a-binary-tree/
     to root. A Better Solution is to do Level Order Traversal. While doing traversal, returns depth of the 
     first encountered leaf node.
 */
-public class BinaryTree_14_MinimumDepth {
+public class BTP_02_MinimumDepth {
     static class Node {
         int data;
         Node left, right;

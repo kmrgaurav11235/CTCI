@@ -9,7 +9,7 @@ https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
 - The LCA of n1 and n2 in T is the shared ancestor of n1 and n2 that is located farthest 
     from the root. 
 */
-public class BinaryTree_12_LowestCommonAncestor {
+public class BTP_05_LowestCommonAncestor {
     static class Node {
         int data;
         Node left, right;

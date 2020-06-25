@@ -36,7 +36,7 @@ https://www.geeksforgeeks.org/convert-a-binary-tree-to-a-circular-doubly-link-li
     break the connection between head and tail at the end.
 
 */
-public class BinaryTree_13_ConvertToCircularDLL {
+public class BTCC_02_ConvertToCircularDLL {
     static class Node {
         int data;
         Node left, right;

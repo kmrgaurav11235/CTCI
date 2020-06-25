@@ -15,7 +15,7 @@ https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/
     2. Breadth First or Level Order Traversal : 1 2 3 4 5
 
 */
-public class BinaryTree_01_TreeTraversals {
+public class BTT_01_TreeTraversals {
     static class Node {
         int data;
         Node left, right;

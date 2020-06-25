@@ -29,7 +29,7 @@ https://www.geeksforgeeks.org/clone-binary-tree-random-pointers/
         (cA and cB are new node in cloned tree corresponding to node A and B in original tree).
     3. Restore left pointers correctly in both original and cloned tree.
 */
-public class BinaryTree_11_CloneBTWithRandomPointers {
+public class BTCC_01_CloneBTWithRandomPointers {
     static class Node {
         int data;
         Node left, right, random;

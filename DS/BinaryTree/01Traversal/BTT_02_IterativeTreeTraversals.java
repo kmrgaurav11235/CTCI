@@ -72,7 +72,7 @@ https://www.geeksforgeeks.org/iterative-postorder-traversal-set-3/
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class BinaryTree_02_IterativeTreeTraversals {
+public class BTT_02_IterativeTreeTraversals {
     static class Node {
         int data;
         Node left, right;
