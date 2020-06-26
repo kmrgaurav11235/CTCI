@@ -1,11 +1,13 @@
 import java.util.Arrays;
 
 /*
-There are n houses built in a line, each of which contain some value in it. A thief
-is trying to steal maximum value from these. But, he cannot steal from two adjacent 
-houses. What is the maximum value that he can steal?
+https://www.geeksforgeeks.org/find-maximum-possible-stolen-value-houses/
+https://www.geeksforgeeks.org/maximum-sum-such-that-no-two-elements-are-adjacent-set-2/
 
-Check out the TD solution first.
+- There are n houses built in a line, each of which contain some value in it. A thief is trying to steal 
+    maximum value from these. But, he cannot steal from two adjacent houses. What is the maximum value 
+    that he can steal?
+- Check out the TD solution first.
 */
 class DP_03_HouseThief_BU {
     static int maxValueFromNonAdjacentHouses(int [] housesNetWorth) {
@@ -29,3 +31,4 @@ class DP_03_HouseThief_BU {
             + " = " + maxValueFromNonAdjacentHouses(housesNetWorth2) + ".");
     }
 }
+// Another Efficient solution is under Arrays -> MaxSumNonAdjacent
