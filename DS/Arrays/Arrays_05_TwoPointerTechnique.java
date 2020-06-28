@@ -22,6 +22,7 @@ https://www.geeksforgeeks.org/two-pointers-technique/
     Find a triplet that sum to a given value
     Find a triplet such that sum of two equals to third element
     Find four elements that sum to a given value
+    The Celebrity Problem
 */
 class Arrays_05_TwoPointerTechnique {
     private static void displayPairSumIndices(int[] sortedArray, int requiredSum) {
