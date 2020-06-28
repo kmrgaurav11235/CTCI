@@ -1,5 +1,4 @@
 /*
-NEEDS TO BE FIXED
 https://www.geeksforgeeks.org/sum-of-two-linked-lists/
 
 - Given two numbers represented by two linked lists, write a function that returns 
@@ -77,13 +76,6 @@ public class LL_12_AddTwoNumbersInLL {
         return temp.next;
     }
 
-    private static Node moveForward(Node p, int n) {
-        for (int i = 0; i < n; i++) {
-            p = p.next;
-        }
-        return p;
-    }
-
     private static NodeAndCarry addLLOfSameSize(Node p, Node q) {
         if (p == null) {
             return new NodeAndCarry(null, 0);
@@ -99,20 +91,22 @@ public class LL_12_AddTwoNumbersInLL {
         return new NodeAndCarry(node, carry);
     }
 
-    private static NodeAndCarry propagateCarry(Node node, Node end, int carry, Node secondPart) {
+    private static NodeAndCarry propagateCarry(Node start, Node end, Node sumStart, int sumCarry) {
         int sum = 0;
-        if (node == end) {
-            sum = node.data + carry;
-            int newCarry = sum % 10;
-            sum = sum / 10;
+        if (start.next == end) {
+            sum = start.data + sumCarry;
+            int newCarry = sum / 10;
+            sum = sum % 10;
+
             Node temp = new Node(sum);
-            temp.next = secondPart;
+            temp.next = sumStart;
             return new NodeAndCarry(temp, newCarry);
         } else {
-            NodeAndCarry nxt = propagateCarry(node.next, end, carry, secondPart);
-            sum = node.data + nxt.carry;
-            int newCarry = sum % 10;
-            sum = sum / 10;
+            NodeAndCarry nxt = propagateCarry(start.next, end, sumStart, sumCarry);
+            sum = start.data + nxt.carry;
+            int newCarry = sum / 10;
+            sum = sum % 10;
+
             Node temp = new Node(sum);
             temp.next = nxt.node;
             return new NodeAndCarry(temp, newCarry);
@@ -122,55 +116,58 @@ public class LL_12_AddTwoNumbersInLL {
     public static LinkedList addTwoLists(LinkedList list1, LinkedList list2) {
         LinkedList sumList = new LinkedList();
 
-        Node num1 = list1.head;
-        Node num2 = list2.head;
-
-        if (num1 == null) {
-            sumList.head = copyLL(num2);
-        } else if (num2 == null) {
-            sumList.head = copyLL(num1);
+        if (list1.head == null) {
+            sumList.head = copyLL(list1.head);
+        } else if (list2.head == null) {
+            sumList.head = copyLL(list2.head);
         }
-        int m = list1.getLength();
-        int n = list2.getLength();
+        int size1 = list1.getLength();
+        int size2 = list2.getLength();
 
-        Node p = num1, q = num2;
-
-        if (m > n) {
-            p = moveForward(p, m - n);
-        } else if (m < n) {
-            q = moveForward(q, n - m);
-        } else {
-            // m == n
-            NodeAndCarry nodeAndCarry = addLLOfSameSize(p, q);
-            if (nodeAndCarry.carry != 0) {
-                Node temp = new Node(nodeAndCarry.carry);
-                temp.next = nodeAndCarry.node;
-                sumList.head = temp;
-            } else {
+        if (size1 == size2) {
+            NodeAndCarry nodeAndCarry = addLLOfSameSize(list1.head, list2.head);
+            if (nodeAndCarry.carry == 0) {
                 sumList.head = nodeAndCarry.node;
+            } else {
+                Node carryNode = new Node(nodeAndCarry.carry);
+                carryNode.next = nodeAndCarry.node;
+                sumList.head = carryNode;
             }
             return sumList;
-        }
-        NodeAndCarry secondPart = addLLOfSameSize(p, q);
-        NodeAndCarry firstPart = null;
+        } else if (size1 < size2) {
+            // Swap the lists and the size
+            LinkedList tempList = list1;
+            list1 = list2;
+            list2 = tempList;
 
-        if (m > n) {
-            firstPart = propagateCarry(num1, p, secondPart.carry, secondPart.node);
-        } else if (m < n) {
-            firstPart = propagateCarry(num2, q, secondPart.carry, secondPart.node);
+            int tempSize = size1;
+            size1 = size2;
+            size2 = tempSize;
         } 
+        // Now size1 > size2
 
-        if (firstPart.carry != 0) {
+        Node p = list1.head;
+        for (int i = 0; i < (size1 - size2); i++) {
+            p = p.next;
+        }
+        // Now p is at the same level as list2.head
+
+        NodeAndCarry secondPart = addLLOfSameSize(p, list2.head);
+
+        NodeAndCarry firstPart = propagateCarry(list1.head, p, secondPart.node, secondPart.carry);
+
+        if (firstPart.carry == 0) {
+            sumList.head = firstPart.node;
+        } else {
             Node temp = new Node(firstPart.carry);
             temp.next = firstPart.node;
             sumList.head = temp;
-        } else {
-            sumList.head = firstPart.node;
         }
         return sumList;
     }
 
     public static void main(String[] args) {
+        System.out.println("******* TEST 1 *******");
         // creating first list 
         LinkedList list1 = new LinkedList(); 
         list1.head = new Node(6); 
@@ -187,7 +184,26 @@ public class LL_12_AddTwoNumbersInLL {
         System.out.println("Second List is: " + list2); 
 
         // add the two lists and see the result 
-        LinkedList result = addTwoLists(list1, list2); 
-        System.out.println("Resultant List is: " + result); 
+        LinkedList result1 = addTwoLists(list1, list2); 
+        System.out.println("Resultant List is: " + result1); 
+
+    
+        System.out.println("\n******* TEST 2 *******");
+        // creating first list 
+        LinkedList list3 = new LinkedList(); 
+        list3.head = new Node(9); 
+        list3.head.next = new Node(9); 
+        list3.head.next.next = new Node(9); 
+        System.out.println("First List is: " + list3);  
+
+        // creating seconnd list 
+        LinkedList list4 = new LinkedList(); 
+        list4.head = new Node(1); 
+        list4.head.next = new Node(8); 
+        System.out.println("Second List is: " + list4); 
+
+        // add the two lists and see the result 
+        LinkedList result2 = addTwoLists(list3, list4); 
+        System.out.println("Resultant List is: " + result2); 
     }
 }
