@@ -1,3 +1,16 @@
+/*
+https://www.geeksforgeeks.org/merge-two-sorted-linked-lists/
+
+- Write a function that takes two lists, each of which is sorted in increasing order, and merges the 
+    two together into one list which is in increasing order. The new list should be made by splicing
+    together the nodes of the first two lists.
+- For example if the first linked list a is 5->10->15 and the other linked list b is 2->3->20, then 
+    the function should return a pointer to the head node of the merged list 2->3->5->10->15->20.
+- Method 1 - Using Recursion: Merge is one of those nice recursive problems where the recursive solution 
+    code is much cleaner than the iterative code. It will, however, use stack space which is proportional 
+    to the length of the lists.
+- Method 2 - Using Iteration.
+*/
 public class LL_06_MergeSortedLL {
     static class Node {
         int data;
@@ -33,24 +46,23 @@ public class LL_06_MergeSortedLL {
         Node temp = new Node(0);
 
         Node p = head1, q = head2, r = temp;
-        while (true) {
-            if (p == null) {
-                r.next = q;
-            } else if (q == null) {
+        while (p != null && q != null) {
+            if (p.data <= q.data) {
                 r.next = p;
+                r = r.next;
+                p = p.next;
             } else {
-                if (p.data < q.data) {
-                    r.next = p;
-                    r = r.next;
-                    p = p.next;
-                } else {
-                    r.next = q;
-                    r = r.next;
-                    q = q.next;
-                }
+                r.next = q;
+                r = r.next;
+                q = q.next;
             }
-            return temp.next;
         }
+        if (p == null) {
+            r.next = q;
+        } else if (q == null) {
+            r.next = p;
+        } 
+        return temp.next;
     }
 
     static Node mergeLinkedListsRecursive(Node head1, Node head2) {
@@ -84,7 +96,7 @@ public class LL_06_MergeSortedLL {
 
         LinkedList lnList3 = new LinkedList(); 
         // lnList3.head = mergeLinkedListsRecursive(lnList1.head, lnList2.head);
-        lnList3.head = mergeLinkedListsRecursive(lnList1.head, lnList2.head);
+        lnList3.head = mergeLinkedListsIterative(lnList1.head, lnList2.head);
         System.out.println("Linked lists after merging is: " + lnList3); 
     }
 }
