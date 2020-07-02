@@ -42,7 +42,7 @@ public class BST_05_InorderSuccessor {
         public Node inOrderSuccessor(int nodeData) {
             Node p = root;
             Node successorAmongParents = null;
-            while (p != null || p.data != nodeData) {
+            while (p != null) {
                 if (nodeData < p.data) {
                     successorAmongParents = p;
                     p = p.left;
@@ -105,6 +105,15 @@ public class BST_05_InorderSuccessor {
 
         // Last Element
         nodeData = 22;
+        successor = tree.inOrderSuccessor(nodeData);
+        if (successor != null) {
+            System.out.println("Inorder successor of " + nodeData + " is " + successor.data);
+        } else {
+            System.out.println("Inorder successor of " + nodeData + " does not exists");
+        }
+
+        // Root Element
+        nodeData = 20;
         successor = tree.inOrderSuccessor(nodeData);
         if (successor != null) {
             System.out.println("Inorder successor of " + nodeData + " is " + successor.data);
