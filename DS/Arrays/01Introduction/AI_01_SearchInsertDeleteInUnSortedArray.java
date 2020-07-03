@@ -1,7 +1,7 @@
 /*
 Article: https://www.geeksforgeeks.org/search-insert-and-delete-in-an-unsorted-array/
 */
-class Arrays_01_SearchInsertDeleteInUnSortedArray {
+class AI_01_SearchInsertDeleteInUnSortedArray {
     // Search  and return index of key
     int search (int [] arr, int n, int key) {
         for (int i = 0; i < n; i++) {
@@ -35,8 +35,8 @@ class Arrays_01_SearchInsertDeleteInUnSortedArray {
         }
     }
     public static void main(String[] args) {
-        Arrays_01_SearchInsertDeleteInUnSortedArray s
-            = new Arrays_01_SearchInsertDeleteInUnSortedArray();
+        AI_01_SearchInsertDeleteInUnSortedArray s
+            = new AI_01_SearchInsertDeleteInUnSortedArray();
         System.out.println("************ SEARCH ************");
         int arr1[] = {12, 34, 10, 6, 40}; 
         int n1 = arr1.length; 

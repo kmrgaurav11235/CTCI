@@ -12,7 +12,7 @@ https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
         b) maxSoFar = max (maxSoFar, maxEndingHere)
     3) return maxSoFar
 */
-public class Arrays_08_LargestSumContiguousSubarray {
+public class AO_01_LargestSumContiguousSubarray {
     static int maxSubArraySum(int[] a) {
         int maxEndingHere = a[0];
         int maxSoFar = a[0];

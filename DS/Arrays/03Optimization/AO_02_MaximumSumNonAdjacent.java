@@ -25,7 +25,7 @@ Also see House Thief problem under Dynamic Programming
         be adjacent).
     3) At the end of the loop return max of incl and excl.
 */
-public class Arrays_09_MaximumSumNonAdjacent {
+public class AO_02_MaximumSumNonAdjacent {
 
     static int maxValueFromNonAdjacentElements(int[] arr) {
         if (arr.length == 0) {

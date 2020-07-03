@@ -13,7 +13,7 @@ https://www.geeksforgeeks.org/leaders-in-an-array/
 - Solution: Scan all the elements from right to left in an array and keep track of maximum till now. When 
     maximum changes its value, record it.
 */
-public class Arrays_10_LeadersInArray {
+public class AS_04_LeadersInArray {
     static List<Integer> getLeaders(int[] arr) {
         int n = arr.length;
         LinkedList<Integer> leaders = new LinkedList<>();

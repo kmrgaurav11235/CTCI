@@ -20,7 +20,7 @@ https://www.geeksforgeeks.org/find-maximum-product-of-a-triplet-in-array/
         of Minimum, second minimum and Maximum element.
 - Step 1 and Step 2 can be done in single traversal of the array.
 */
-public class Arrays_04_MaximumProductOfTriplet {
+public class AS_02_MaximumProductOfTriplet {
 
     static int getMaxProductOfTriplet(int[] arr) {
         if (arr == null || arr.length < 3) {

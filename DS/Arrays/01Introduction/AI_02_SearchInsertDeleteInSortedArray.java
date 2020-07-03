@@ -1,7 +1,7 @@
 /*
 Article: https://www.geeksforgeeks.org/search-insert-and-delete-in-a-sorted-array/
 */
-class Arrays_02_SearchInsertDeleteInSortedArray {
+class AI_02_SearchInsertDeleteInSortedArray {
     // Search: Recursive binary search
     int recursiveBinarySearch (int [] arr, int low, int high, int key) {
         if (low > high) {
@@ -57,8 +57,8 @@ class Arrays_02_SearchInsertDeleteInSortedArray {
         return n - 1;
     }
     public static void main(String[] args) {
-        Arrays_02_SearchInsertDeleteInSortedArray s = 
-            new Arrays_02_SearchInsertDeleteInSortedArray();
+        AI_02_SearchInsertDeleteInSortedArray s = 
+            new AI_02_SearchInsertDeleteInSortedArray();
         
         System.out.println("************ SEARCH ************");
         int arr1[] = { 5, 6, 7, 8, 9, 10 }; 

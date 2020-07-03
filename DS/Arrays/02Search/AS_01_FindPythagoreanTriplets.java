@@ -14,7 +14,7 @@ https://www.geeksforgeeks.org/find-pythagorean-triplet-in-an-unsorted-array/
         check if there exists the third value c. 
     * If there exists any such value, then there is a Pythagorean triplet. 
 */
-public class Arrays_07_FindPythagoreanTriplets { 
+public class AS_01_FindPythagoreanTriplets { 
     
     static void findPythagoreanTriplet(int[] arr) {
         if (arr.length < 3) {

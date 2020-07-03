@@ -16,7 +16,7 @@ Window Sliding technique shows how a nested for-loop in some problems can be con
         previous block and add the last element of the current block.
 
 */
-public class Arrays_06_SlidingWindow {
+public class AM_01_SlidingWindow {
     private static int getMaximumSum(int[] arr, int n, int k) {
         if (n < k) {
             System.out.println("Bad Request. Array size cannot be smaller than k.");
