@@ -20,12 +20,12 @@ public class AOS_01_MeanAndMedian {
         for (int num : a) {
             sum += num;
         }
-        return (double)sum / n;
+        return sum / (double)n;
     }
 
     static double findMedianOfSortedArray(int[] a, int n) {
         if (n % 2 == 0) {
-            return (double)(a[n / 2 - 1] + a[n / 2]) / 2;
+            return (a[n / 2 - 1] + a[n / 2]) / 2.0;
         } else {
             return a[n / 2];
         }
