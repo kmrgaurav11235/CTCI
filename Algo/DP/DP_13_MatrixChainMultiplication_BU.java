@@ -2,42 +2,47 @@
 https://www.geeksforgeeks.org/matrix-chain-multiplication-dp-8/
 http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Dynamic/chainMatrixMult.htm
 
-- Given a sequence of matrices, find the most efficient way to multiply these matrices together. The 
-    problem is not actually to perform the multiplications, but merely to decide in which order to 
-    perform the multiplications.
+- Given a sequence of matrices A[1]A[2]...A[n], find the most efficient way to multiply these matrices 
+    together. The problem is not actually to perform the multiplications, but merely to decide in which 
+    order to perform the multiplications.
 - We have many options to multiply a chain of matrices because matrix multiplication is associative. 
-    In other words, no matter how we parenthesize the product, the result will be the same. For example, 
-    if we had four matrices A, B, C, and D, we would have:
-    (ABC)D = (AB)(CD) = A(BCD) = ....
+    In other words, no matter how we parenthesize the product, the result will be the same. 
+- For example, if the chain of matrices is A[1]A[2]A[3]A[4], then we can fully parenthesize the product
+    in five distinct ways:
+    1) (A[1] x (A[2] x (A[3] x A[4])))
+    2) (A[1] x ((A[2] x A[3]) x A[4]))
+    3) ((A[1] x A[2]) x (A[3] x A[4]))
+    4) ((A[1] x (A[2] x A[3])) x A[4])
+    5) (((A[1] x A[2]) x A[3]) x A[4])
 - However, the order in which we parenthesize the product affects the number of simple arithmetic 
-    operations needed to compute the product, or the efficiency. For example, suppose A is a 10 × 30 
-    matrix, B is a 30 × 5 matrix, and C is a 5 × 60 matrix. Then,
-    * (AB)C = (10×30×5) + (10×5×60) = 1500 + 3000 = 4500 operations
-    * A(BC) = (30×5×60) + (10×30×60) = 9000 + 18000 = 27000 operations.
+    operations needed to compute the product, or the efficiency. For example, suppose A[1] is a 10 × 30 
+    matrix, A[2] is a 30 × 5 matrix, and A[3] is a 5 × 60 matrix. Then,
+    * (A[1] x A[2]) x A[3] = (10×30×5) + (10×5×60) = 1500 + 3000 = 4500 operations
+    * A[1] x (A[2] x A[3]) = (30×5×60) + (10×30×60) = 9000 + 18000 = 27000 operations.
     Clearly the first parenthesization requires less number of operations.
-- Given an array p[] which represents the chain of matrices such that the i-th matrix Ai is of dimension 
+- Given an array p[] which represents the chain of matrices such that the i-th matrix A[i] is of dimension 
     p[i-1] x p[i]. We need to write a function matrixChainOrder() that should return the minimum number 
-    of multiplications needed to multiply the chain.
+    of scalar multiplications needed to multiply the chain.
 
     1) 
-    Input: p[] = {40, 20, 30, 10, 30}   
+    Input: p[] = {40, 20, 30, 10, 30}
     Output: 26000  
     There are 4 matrices of dimensions 40x20, 20x30, 30x10 and 10x30. The minimum number of multiplications 
     are obtained by putting parenthesis in following way:
-    (A(BC))D --> 20*30*10 + 40*20*10 + 40*10*30
+    (A[1] x (A[2] x A[3])) x A[4] --> 20 * 30 * 10 + 40 * 20 * 10 + 40 * 10 * 30
 
     2)
     Input: p[] = {10, 20, 30, 40, 30} 
     Output: 30000 
     There are 4 matrices of dimensions 10x20, 20x30, 30x40 and 40x30. The minimum number of multiplications 
     are obtained by putting parenthesis in following way:
-    ((AB)C)D --> 10*20*30 + 10*30*40 + 10*40*30
+    ((A[1] x A[2]) x A[3]) x A[4] --> 10 * 20 * 30 + 10 * 30 * 40 + 10 * 40 * 30
 
     3)
-    Input: p[] = {10, 20, 30}  
+    Input: p[] = {10, 20, 30}
     Output: 6000  
-    There are only two matrices of dimensions 10x20 and 20x30. So there is only one way to multiply the 
-    matrices, cost of which is 10*20*30
+    There are only two matrices of dimensions 10 x 20 and 20 x 30. So there is only one way to multiply the 
+    matrices, cost of which is 10 * 20 * 30
 
 - Solution:
     Step 1) The structure of an optimal parenthesization: For convenience, let us adopt the notation A[i..j], 
@@ -76,7 +81,7 @@ http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Dynamic/chainMatr
         * The algorithm should fill in the table min a manner that corresponds to solving the parenthesization 
             problem on matrix chains of increasing length.
         * matrixChainOrder (p[], n)
-            let m[0,n-1][0,n-1] and s[0,n-1][0,n] be new tables
+            let m[0,n-1][0,n-1] and s[0,n-1][0,n-1] be new tables
             // For simplicity of the program, one extra row and one extra column are allocated in m[][]. 
             // 0th row and 0th column of m[][] are not used
             for i = 1 to n - 1
@@ -93,7 +98,45 @@ http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Dynamic/chainMatr
                             m[i][j] = q
                             s[i][j] = k
             return m and s
+    Step 4) Constructing an optimal solution
+        Each entry s[i][j] records a value of k such that an optimal parenthesization of A[i]A[i+1]..Aj 
+        splits the product between A[k] and A[k+1]. We can determine the earlier matrix multiplications 
+        recursively.
+        * printOptimalParenthesis(parenthesis[][], i, j)
+            if i == j
+                print A[i]
+            else 
+                print "("
+                printOptimalParenthesis(parenthesis, i, parenthesis[i][j])
+                print " x "
+                printOptimalParenthesis(parenthesis, parenthesis[i][j] + 1, j)
+                print ")"
 */
-public class DP_13_MatrixChainMultiplication {
-    
+public class DP_13_MatrixChainMultiplication_BU {
+
+    static void matrixChainOrder(int[] p1) {
+    }
+    public static void main(String[] args) {
+        
+        int[] p1 = { 40, 20, 30, 10, 30 };
+        System.out.println("Matrix dimensions: ");
+        for (int i = 1; i < p1.length; i++) {
+            System.out.println("A[" + i + "] : " + p1[i - 1] + " x " + p1[i]);
+        }
+        matrixChainOrder(p1);
+
+        int[] p2 = { 10, 20, 30, 40, 30 };
+        System.out.println("\n\nMatrix dimensions: ");
+        for (int i = 1; i < p2.length; i++) {
+            System.out.println("A[" + i + "] : " + p2[i - 1] + " x " + p2[i]);
+        }
+        matrixChainOrder(p2);
+
+        int[] p3 = { 10, 20, 30 };
+        System.out.println("\n\nMatrix dimensions: ");
+        for (int i = 1; i < p3.length; i++) {
+            System.out.println("A[" + i + "] : " + p3[i - 1] + " x " + p3[i]);
+        }
+        matrixChainOrder(p3);
+    }
 }
