@@ -1,6 +1,7 @@
 /*
 https://www.geeksforgeeks.org/matrix-chain-multiplication-dp-8/
 http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Dynamic/chainMatrixMult.htm
+https://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-problem/
 
 - Given a sequence of matrices A[1]A[2]...A[n], find the most efficient way to multiply these matrices 
     together. The problem is not actually to perform the multiplications, but merely to decide in which 
@@ -99,7 +100,7 @@ http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Dynamic/chainMatr
                             s[i][j] = k
             return m and s
     Step 4) Constructing an optimal solution
-        Each entry s[i][j] records a value of k such that an optimal parenthesization of A[i]A[i+1]..Aj 
+        Each entry s[i][j] records a value of k such that an optimal parenthesization of A[i]A[i+1]..A[j] 
         splits the product between A[k] and A[k+1]. We can determine the earlier matrix multiplications 
         recursively.
         * printOptimalParenthesis(parenthesis[][], i, j)
@@ -114,7 +115,44 @@ http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Dynamic/chainMatr
 */
 public class DP_13_MatrixChainMultiplication_BU {
 
-    static void matrixChainOrder(int[] p1) {
+    static void printOptimalParenthesis(int [][] parenthesis, int i, int j) {
+        if (i == j) {
+            System.out.print("A[" + i + "]");
+        } else {
+            System.out.print("(");
+            printOptimalParenthesis(parenthesis, i, parenthesis[i][j]);
+            System.out.print(" x ");
+            printOptimalParenthesis(parenthesis, parenthesis[i][j] + 1, j);
+            System.out.print(")");
+        }
+    }
+
+    static void matrixChainOrder(int[] p) {
+        int n = p.length;
+        int [][] memo = new int[n][n];
+        int [][] parenthesis = new int[n][n];
+
+        // Initialization: memo[][] is already initialized to all 0.
+
+        // l = length of matrix chain
+        // when l = 1, result should be zero. memo[][] is already set to 0.
+        for (int l = 2; l < n; l++) {
+            for (int i = 1; i < n - l + 1; i++) {
+                int j = i + l - 1;
+                memo[i][j] = Integer.MAX_VALUE;
+                for (int k = i; k < j; k++) {
+                    int operationCount = memo[i][k] + memo[k + 1][j] + p[i - 1] * p[k] * p[j];
+                    if (memo[i][j] > operationCount) {
+                        memo[i][j] = operationCount;
+                        parenthesis[i][j] = k;
+                    }
+                }
+            }
+        }
+
+        System.out.println("Optimum Number of Operations: " + memo[1][n - 1]);
+        System.out.print("Optimal Parenthesization is : ");
+        printOptimalParenthesis(parenthesis, 1, n - 1);
     }
     public static void main(String[] args) {
         

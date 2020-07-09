@@ -98,7 +98,7 @@ https://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-prob
                     parenthesis[i][j] = k
 
     Step 4) Constructing an optimal solution
-        Each entry s[i][j] records a value of k such that an optimal parenthesization of A[i]A[i+1]..Aj 
+        Each entry s[i][j] records a value of k such that an optimal parenthesization of A[i]A[i+1]..A[j] 
         splits the product between A[k] and A[k+1]. We can determine the earlier matrix multiplications 
         recursively.
         * printOptimalParenthesis(parenthesis[][], i, j)
