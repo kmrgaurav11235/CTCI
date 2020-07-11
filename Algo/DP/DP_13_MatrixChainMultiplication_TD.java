@@ -110,6 +110,8 @@ https://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-prob
                 print " x "
                 printOptimalParenthesis(parenthesis, parenthesis[i][j] + 1, j)
                 print ")"
+- Time Complexity: O(n ^ 3)
+- Auxiliary Space: O(n ^ 2)
 */
 public class DP_13_MatrixChainMultiplication_TD {
 
