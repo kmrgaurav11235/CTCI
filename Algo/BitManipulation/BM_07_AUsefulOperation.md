@@ -23,16 +23,19 @@ Thus, (n - 1) will look like n except that n's initial 0s will be changed to 1s 
 ```
 If n = abcde1000
 then n - 1 = abcde0111
+and n & (n - 1) = abcde0000
 ```
 ## So what does (n & (n - 1)) == 0 indicate?
 n and (n - 1) must have no 1s in common. Given that they look like this:
 ```
 If n = abcde1000
 then n - 1 = abcde0111
+and n & (n - 1) = abcde0000
 ```
 abcde must be all 0s. This means that n looks like this: ```00..00100..00```. The value of n is, therefore, a power of 2.
 
 One more possible value of n is 0, where no 1 exists. 
 
 So, in conclusion:
+* The operation ```n & (n - 1)``` returns a number where the least significant 1-bit of n is flipped to 0.
 * ```(n & (n - 1)) == 0``` can be used to check it n is either 0 or a power of 2.
