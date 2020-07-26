@@ -73,7 +73,7 @@ public class DP_16_OptimalStrategyForAGame_BU {
         }
 
         // Fill table using the above recursive formula. Note that the table is filled in diagonal 
-        // fashion (similar to Palindrome Partitioning), 
+        // fashion (similar to Palindrome Partitioning).
         for (int gap = 2; gap <= n; gap++) {
             for (int i = 0; i < n - gap; i++) {
                 int j = i + gap;
