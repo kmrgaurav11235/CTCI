@@ -15,9 +15,13 @@ http://tutorials.jenkov.com/java-functional-programming/streams.html
     implement the iteration of the elements yourself. 
 - The Java Stream API is not related to the Java InputStream and Java OutputStream of Java IO. The 
     InputStream and OutputStream are related to streams of bytes. The Java Stream API is for 
-    processing streams of objects - not bytes. 
+    processing streams of objects - not bytes.
+- The Stream interface has a selection of Terminal and Non-terminal (Intermediate) operations. 
+- A Non-terminal (Intermediate) stream operation allows chaining.
+- A terminal stream operation starts the internal iteration of the elements and returns a result. 
+- It's also worth noting that operations on streams don't change the source.
 */
-public class Stream_01_Creation {
+public class Stream_01_Introduction {
     public static void main(String[] args) {
         /*
         Stream Creation: 
