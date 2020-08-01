@@ -6,7 +6,7 @@
 
 ## Comparison
 | Horizontal Scaling | Vertical Scaling |
-| :------------- | ---------- | 
+| ------------- | ---------- | 
 |  Load Balancing required | Not Required | 
 | Resilient | Single point of failure |
 | Network calls (RPCs) | Inter-process communication |
