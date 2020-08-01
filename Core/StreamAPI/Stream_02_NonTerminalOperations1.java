@@ -14,7 +14,7 @@ http://tutorials.jenkov.com/java-functional-programming/streams.html
 -  Many non-terminal Stream operations can take a Java Lambda Expression as parameter. For instance, 
 	the Function or Predicate interface.
 */
-public class Stream_02_NonTerminalOperations {
+public class Stream_02_NonTerminalOperations1 {
     public static void main(String[] args) {
 		List<String> words = List.of("Thrice", "he", "was", "crushed", "to", "his", "knees", "and", 
 				"thrice", "arose", "again", "and", "bore", "up", "his", "broken", "shield", "and", 
