@@ -34,13 +34,22 @@ public class Stream_01_Introduction {
         List<String> kings = List.of("Elwe", "Finwe", "Ingwe");
         Stream<String> kingsStream = kings.stream();
 
-        Stream<String> cities = Stream.of("Utumno", "Minas Morgul", "Doriath");
+        Stream<String> citiesStream = Stream.of("Utumno", "Minas Morgul", "Doriath");
 
         /*
-        Multi-threading With Streams:
-        Stream API also simplifies multi-threading by providing the parallelStream() method that runs 
-        operations over stream's elements in parallel mode.
+        Concatenate Streams:
+        The Java Stream interface contains a static method called concat() which can concatenate two streams 
+        into one. The result is a new Stream which contains all of the elements from the first stream, 
+        followed by all of the elements from the second stream. 
         */
-        Stream<String> kingsParallelStream = kings.parallelStream();
+        Stream<String> kingsAndQueens = Stream.concat(kingsStream, queensStream);
+        Stream<String> kingsQueensAndCities = Stream.concat(kingsAndQueens, citiesStream);
+        System.out.println("Kings Queens and Cities:");
+        printStream(kingsQueensAndCities);
     }
+
+	private static void printStream(Stream<String> wordStream) {
+		wordStream.forEach(word -> System.out.print(word + " "));
+		System.out.println("");
+	}
 }
