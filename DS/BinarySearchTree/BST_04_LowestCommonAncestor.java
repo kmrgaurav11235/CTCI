@@ -57,7 +57,7 @@ public class BST_04_LowestCommonAncestor {
             if (lca == null) {
                 return lca;
             } else {
-                if (isPresent(root, key1) && isPresent(root, key2)) {
+                if (isPresent(lca, key1) && isPresent(lca, key2)) {
                     return lca;
                 } else {
                     return null;
