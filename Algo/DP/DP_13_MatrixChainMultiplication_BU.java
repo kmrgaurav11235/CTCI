@@ -77,7 +77,7 @@ https://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-prob
         * Input: Sequence p[] = {p[0], p[1], p[n - 1]} where the matrix A[i] has dimensions p[i-1] x p[i] for 
             i = (0,1,2...n - 1). 
         * The procedure uses an auxiliary table m[][] for storing the costs.
-        * And another auxiliary tabl s[][] that records which index of k achieved the optimal cost in computing 
+        * And another auxiliary table s[][] that records which index of k achieved the optimal cost in computing 
             m[i][j].
         * The algorithm should fill in the table min a manner that corresponds to solving the parenthesization 
             problem on matrix chains of increasing length.
