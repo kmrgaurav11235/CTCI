@@ -19,12 +19,12 @@ Also ask about the scale at which the application is to be used, the user base e
 * This information about which user in connected to which Box can be stored at the Gateway itself. This is just a UserId to BoxId mapping. This, however, is not a good idea as the information is duplicated across all the Boxes.
 * Instead of this coupled design, we can create a ***Sessions Microservice***. The Service can be scaled up and down on the basis of demand.
 
-![Sessions Microservice](../Images/SessionsMicroservice.png)
+![Sessions Microservice](../Images/SessionsMicro-service.png)
 
 * The Sessions Microservice simply stores -- Who is connected to which box. This has allowed us to decouple Sessions information from the gateway.
   1. Let us say that User A wants to send message to user B. It calls `sendMessage(B)` to Gateway 1.
   2. The Gateway is dumb and it just sends the message to the Sessions service. 
-  3. The Sessions service stores the message in persistent storage (Chat-DB or Chat-Queue). It will keep trying to send the message till User B gets it.
+  3. The Sessions service stores the message in persistent storage (***Chat-Queue***). It will keep trying to send the message till User B gets it.
   4. Since User B is guaranteed to get the message, the Sessions Service will send User A a ***Sent receipt***.
   5. The Sessions Service routes the message to Gateway 2 on the basis of information stored in its DB.
   6. Gateway 2 then sends the message to B.
@@ -59,6 +59,24 @@ The WebSocket protocol provides a way to exchange data between client and server
 * There should be limit on timestamp too, e.g. if A did something 3 seconds ago, B shouldn't be told that A was online 3 seconds ago. Instead, B should be told that A online now.
 * All of this can be handled by ***Activity Microservice***. Anytime an activity is done by a User, an event/call should be sent to this service.
 * There are some requests that are not being sent by the user but by the application. e.g. Delivery receipt. We should be able to distinguish between these two and only send update the Activity Microservice when it is a User Request. This can be a flag in the request.
+
+## Group Messaging
+
+![Chat Messaging System](../Images/ChatMessagingSystem.png)
+
+* In the above diagram, the Red users are a part of a single group while the Blue users are a part of another group. When a Red user sends a message, it should be delivered to all Red users. Same for Blue users.
+* In this architecture, we have a ***Group Microservice***. This stores info about which user is a part of which group. 
+* When the Sessions service receives a group message, it can now ask the Group service about the users that are a part of the group. 
+* Once the Sessions service receives a list of users, it can its own DB and find the corresponding Gateways for those users.
+* The maximum number of members allowed to be the part of a group should be restricted. Otherwise a single request will be fanning out too much.
+* When the Sessions service sends the response to the Gateways, a sent receipt can be sent to the original sender.
+* Group 'Delivered receipt' are very expensive, so we can avoid it.
+
+## Other Implementation Details
+* Since a lot of Users will be connecting to our Gateways, these Gateways will be starving for memory. This is reason why we have separated out the Sessions service from the Gateway.
+* Another thing we can do to push processing out of Gateways is to not parse the message here. So, the message sent from Gateway to Sessions service is unparsed. We can put a Parsing/Un-parsing microservice between them.
+* The ***Chat Message Queue*** will allow us to retry if the message sending failed. If the Message Queue fails to send the message and the retries are exhausted, this failure must be communicated to the Client.
+* When there is a huge event, e.g. New Year, there will be a lot of messages. This will put a lot of load on the System. In this case some of the features like Online/Last, Delivery Reports etc. Seen can be de-prioritized. 
 
 ## Source
 * https://www.youtube.com/watch?v=vvhC64hQZMk
