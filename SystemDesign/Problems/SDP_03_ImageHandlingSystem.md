@@ -3,9 +3,9 @@
 ## Features required
 Ask the interviewer whether these features are required:
 1. **Storing Profile:** Images will be stored in the profile. How many images per user - let us say 5.
-2. **Recommend Matches:** Number of active users?
-3. **Note Matches:** Some percentage of active users, say 0.1%.
-4. **Direct Messaging**
+2. **Storing Matches:** Some percentage of active users, say 0.1%.
+3. **Direct Messaging**
+4. **Recommending Matches:** Number of active users?
 
 They are probably going to say yes to first few features. So, use the order with which you are most comfortable. Also, don't take-up too many features as it will consume a lot of time.
 
@@ -49,7 +49,27 @@ It is better to use DB if:
 * Another functionality we can decouple from ***Profile Service*** is storing images. We can create an ***Image Service*** for this.
 * The ***Image Service*** will have access to a ***Distributed File System*** where it will store the images. It will also have a DB to store ImageId, ImageURL and ProfileId.
 
+## Storing Matches
+* The first question to ask is: Why not store this info on the Client app.
+  * One of the problems is that the Server should be the source of the truth. 
+  * In case a Client uninstalls their app, they shouldn't lose all their matches.
+* Matches can be handled by ***Matching Service***. It will just keep a table of User A to User B. Here, both users have matched with the other.
+* Indexes will be put on each user-id.
+* As for the people you accepted (but have not yet matched to) or rejected, this info can be stored at the Client side. It is not a critical info. So, there should not be a problem if we lose it.
 
+## Direct Messaging
+* Already Discussed in `Chat Messaging System`.
+* There will be some communication between the ***Sessions Service*** and ***Matching Service*** as the Sessions service wants to know if User A is allowed to send a Direct Message to User B. 
+
+## Recommending Matches
+* Recommendation needs to be done on the basis of *Location*. So, we need to figure out: Who are the users close to me?
+* The other two criteria are *Gender* I am interested in and the *Age-group* I am interested in.
+* We need to Shard the data based on the *Location*. It doesn't needs to be the whole city, we can divide the city into chunks (see Uber design).
+* Based on location, we can pull the data from the DB and then filter out the correct *Age-group* and *Gender* using a call to ***Profile Service***.
+* We will use NoSQL Databases for Recommendation DB as this data will get updated every hour or so. It will have keys `UserId` and `Current Location`.
+* This DB will be used by the ***Recommendation Service***. The Client-app will push `Current location` every hour or so.
+
+## Architecture
 ![Tinder as a Microservice](../Images/Tinder.jpeg)
 
 ## Source
