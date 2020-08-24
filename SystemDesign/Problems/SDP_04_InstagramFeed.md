@@ -80,12 +80,30 @@ We can use two different schemes for metadata sharding: Based on UserID and Base
 * Yes, it would be. A workaround for that could be defining two such databases with one generating even numbered IDs and the other odd numbered.
 * We can put a load balancer in front of both of these databases to round robin between them and to deal with downtime. Both these servers could be out of sync with one generating more keys than the other, but this will not cause any issue in our system. 
 * We can extend this design by defining separate ID tables for Users, Photo-Comments, or other objects present in our system.
-* Alternately, we can implement a 'key' generation scheme similar to what we have discussed in 'URL shortener'.
+* Alternately, we can implement a 'key' generation scheme similar to what we have discussed in `URL shortener`: Zookeeper + Worker Threads.
 
-### How can we plan for the future growth of our system? 
-* We can have a large number of logical partitions to accommodate future data growth, such that in the beginning, multiple logical partitions reside on a single physical database server. 
-* Since each database server can have multiple database instances on it, we can have separate databases for each logical partition on any server. So whenever we feel that a particular database server has a lot of data, we can migrate some logical partitions from it to another server. 
-* We can maintain a config file (or a separate database) that can map our logical partitions to database servers; this will enable us to move partitions around easily. Whenever we want to move a partition, we only have to update the config file to announce the change.
+## News Feed Generation
+* For simplicity, let’s assume we need to fetch top 100 photos for a user’s News Feed. 
+* Our application server will first get a list of people the user follows and then fetch metadata info of latest 100 photos from each user. 
+* In the final step, the server will submit all these photos to our ranking algorithm which will determine the top 100 photos (based on recency, likeness, etc.) and return them to the user. 
+* A possible problem with this approach would be higher latency as we have to query multiple tables and perform sorting/merging/ranking on the results. To improve the efficiency, we can pre-generate the News Feed and store it in a separate table.
+
+### Pre-generating the News Feed
+* We can have dedicated servers that are continuously generating users’ News Feeds and storing them in a *UserNewsFeed* table. So whenever any user needs the latest photos for their News Feed, we will simply query this table and return the results to the user.
+* Whenever these servers need to generate the News Feed of a user, they will first query the UserNewsFeed table to find the last time the News Feed was generated for that user. Then, new News Feed data will be generated from that time onwards.
+
+**What are the different approaches for sending News Feed contents to the users?**
+1. ***Pull:*** Clients can pull the News Feed contents from the server on a regular basis or manually whenever they need it. Possible problems with this approach are: 
+   1. New data might not be shown to the users until clients issue a pull request.
+   2. Most of the time pull requests will result in an empty response if there is no new data.
+2. ***Push:*** Servers can push new data to the users as soon as it is available. To efficiently manage this, users have to maintain a Long Poll request with the server for receiving the updates. A possible problem with this approach is, a user who follows a lot of people or a celebrity user who has millions of followers. In this case, the server has to push updates quite frequently.
+3. ***Hybrid:*** We can adopt a hybrid approach. We can move all the users who have a high number of follows to a pull-based model and only push data to those users who have a few hundred (or thousand) follows. Another approach could be that the server pushes updates to all the users not more than a certain frequency, letting users with a lot of follows/updates to regularly pull data.
+
+## Cache and Load balancing
+* Our service would need a massive-scale photo delivery system to serve the globally distributed users. Our service should push its content closer to the user using a large number of geographically distributed photo cache servers and use ***CDNs***.
+* We can introduce a cache for metadata servers to cache hot database rows. The Application servers can quickly check if the cache has desired rows before hitting database. 
+* Least Recently Used (LRU) can be a reasonable cache eviction policy for our system. Under this policy, we discard the least recently viewed row first.
+* How can we build more intelligent cache? If we go with 80-20 rule, i.e., 20% of daily read volume for photos is generating 80% of traffic which means that certain photos are so popular that the majority of people read them. This dictates that we can try caching 20% of daily read volume of photos and metadata.
 
 ## Source
 * https://www.educative.io/courses/grokking-the-system-design-interview/m2yDVZnQ8lG
