@@ -25,7 +25,7 @@
 ## Inheritance and Composition
 * When a class implements the `java.io.Serializable` interface, all its sub-classes are serializable as well. The converse is not true.
 * When an object has a reference to another object, these objects must implement the Serializable interface separately, or else a `NotSerializableException` will be thrown:
-    ```
+    ```java
     public class Person implements Serializable {
         private int age;
         private String name;

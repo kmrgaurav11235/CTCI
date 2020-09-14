@@ -32,7 +32,7 @@ https://www.programiz.com/dsa/bucket-sort
 public class Sorting_09_BucketSort {
     
     static int getBucketIndex(double num) {
-        int intNum = (int) num * 10;
+        int intNum = (int) (num * 10);
         return intNum;
     }
 
@@ -41,10 +41,12 @@ public class Sorting_09_BucketSort {
             // Base case
             return;
         }
-        // create N buckets each of which can hold a range of values. Initialize each bucket with 0 values.
+        // create 'numBuckets' buckets each of which can hold a range of values. Initialize each bucket with 0 values.
+        int numBuckets = 10;
         @SuppressWarnings("unchecked")
-        ArrayList<Double> lists [] = new ArrayList[n];
-        for (int i = 0; i < n; i++) {
+        ArrayList<Double> lists [] = (ArrayList<Double> []) new ArrayList[numBuckets];
+        
+        for (int i = 0; i < numBuckets; i++) {
             lists[i] = new ArrayList<>();
         }
         // Put elements into buckets matching the range
@@ -55,6 +57,7 @@ public class Sorting_09_BucketSort {
         // Sort elements in each bucket
         for (ArrayList<Double> numList : lists) {
             Collections.sort(numList);
+            // System.out.println(numList);
         }
 
         // Gather elements from each bucket
@@ -67,7 +70,7 @@ public class Sorting_09_BucketSort {
     }
 
     public static void main(String[] args) {
-        double [] arr = { 0.42, 0.32, 0.33, 0.52, 0.37, 0.47, 0.51 };
+        double [] arr = { 0.42, 0.92, 0.33, 0.52, 0.37, 0.47, 0.51 };
 
         System.out.println("Original array: " + Arrays.toString(arr));
         bucketSort(arr, 7);
