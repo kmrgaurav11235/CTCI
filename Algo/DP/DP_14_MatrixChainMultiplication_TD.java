@@ -81,24 +81,22 @@ https://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-prob
             m[i][j].
         * The algorithm should fill in the table min a manner that corresponds to solving the parenthesization 
             problem on matrix chains of increasing length.
-        * matrixChainOrder (p[], n)
-            let m[0,n-1][0,n-1] and s[0,n-1][0,n-1] be new tables
-            // For simplicity of the program, one extra row and one extra column are allocated in m[][]. 
-            // 0th row and 0th column of m[][] are not used
-            for i = 1 to n - 1
-                // cost is zero when multiplying one matrix
-                m[i][i] = 0
-            for l = 2 to n - 1
-                // l is the chain length
-                for i = 1 to n - l
-                    j = i + l - 1
-                    m[i][j] = Infinity
-                    for k = i to j - 1
-                        q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j]
-                        if q < m[i][j]
-                            m[i][j] = q
-                            s[i][j] = k
-            return m and s
+        * Recursive Algorithm:
+        let memo[0,n-1][0,n-1] and parenthesis[0,n-1][0,n-1] be new tables
+        matrixChainOrderRecursive (p[], i, j, memo[][], parenthesis[][])
+            if i == j
+                return 0
+            if memo[i][j] is already calculated
+                return memo[i][j]
+            memo[i][j] = Infinity
+            for k = i to j - 1
+                q = matrixChainOrderRecursive(p, i, k, memo, parenthesis) 
+                    + matrixChainOrderRecursive(p, k + 1, j, memo, parenthesis) 
+                    + p[i - 1] * p[k] * p[j]
+                if q < memo[i][j]
+                    memo[i][j] = q
+                    parenthesis[i][j] = k
+
     Step 4) Constructing an optimal solution
         Each entry s[i][j] records a value of k such that an optimal parenthesization of A[i]A[i+1]..A[j] 
         splits the product between A[k] and A[k+1]. We can determine the earlier matrix multiplications 
@@ -115,9 +113,9 @@ https://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-prob
 - Time Complexity: O(n ^ 3)
 - Auxiliary Space: O(n ^ 2)
 */
-public class DP_13_MatrixChainMultiplication_BU {
+public class DP_14_MatrixChainMultiplication_TD {
 
-    static void printOptimalParenthesis(int [][] parenthesis, int i, int j) {
+    static void printOptimalParenthesis(Integer[][] parenthesis, int i, int j) {
         if (i == j) {
             System.out.print("A[" + i + "]");
         } else {
@@ -129,35 +127,42 @@ public class DP_13_MatrixChainMultiplication_BU {
         }
     }
 
-    static void matrixChainOrder(int[] p) {
-        int n = p.length;
-        int [][] memo = new int[n][n];
-        int [][] parenthesis = new int[n][n];
-
-        // Initialization: memo[][] is already initialized to all 0.
-
-        // l = length of matrix chain
-        // when l = 1, result should be zero. memo[][] is already set to 0.
-        for (int l = 2; l < n; l++) {
-            for (int i = 1; i < n - l + 1; i++) {
-                int j = i + l - 1;
-                memo[i][j] = Integer.MAX_VALUE;
-                for (int k = i; k < j; k++) {
-                    int operationCount = memo[i][k] + memo[k + 1][j] + p[i - 1] * p[k] * p[j];
-                    if (memo[i][j] > operationCount) {
-                        memo[i][j] = operationCount;
-                        parenthesis[i][j] = k;
-                    }
-                }
+    private static int matrixChainOrderUtil(int[] p, int i, int j, Integer[][] memo, Integer[][] parenthesis) {
+        if (i == j) {
+            // cost is zero when multiplying one matrix
+            return 0;
+        } else if (memo[i][j] != null) {
+            return memo[i][j];
+        }
+        memo[i][j] = Integer.MAX_VALUE;
+        for (int k = i; k < j; k++) {
+            int numberOfOperations = matrixChainOrderUtil(p, i, k, memo, parenthesis)
+                    + matrixChainOrderUtil(p, k + 1, j, memo, parenthesis) + p[i - 1] * p[k] * p[j];
+            if (numberOfOperations < memo[i][j]) {
+                memo[i][j] = numberOfOperations;
+                parenthesis[i][j] = k;
             }
         }
+        return memo[i][j];
+    }
 
-        System.out.println("Optimum Number of Operations: " + memo[1][n - 1]);
+    static void matrixChainOrder(int[] p) {
+        int n = p.length;
+
+        /* For simplicity of the program, one extra row and one extra column are allocated in memo[][] and 
+        parenthesis[][]. 0th row and 0th column are not used */
+        Integer[][] memo = new Integer[n][n];
+        Integer[][] parenthesis = new Integer[n][n];
+
+        int num = matrixChainOrderUtil(p, 1, n - 1, memo, parenthesis);
+
+        System.out.println("Optimum Number of operations : " + num);
+
         System.out.print("Optimal Parenthesization is : ");
         printOptimalParenthesis(parenthesis, 1, n - 1);
     }
+
     public static void main(String[] args) {
-        
         int[] p1 = { 40, 20, 30, 10, 30 };
         System.out.println("Matrix dimensions: ");
         for (int i = 1; i < p1.length; i++) {

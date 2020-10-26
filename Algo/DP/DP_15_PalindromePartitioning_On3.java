@@ -25,7 +25,7 @@ https://www.geeksforgeeks.org/palindrome-partitioning-dp-17/
         where k varies from i to j-1
 - Time Complexity: O(n ^ 3)
 */
-public class DP_14_PalindromePartitioning_On3 {
+public class DP_15_PalindromePartitioning_On3 {
 
     static int minPalindromePartition(String str) {
         int n = str.length();

@@ -40,7 +40,7 @@ Let us say we have 3 chefs - 2 are good at making Pizza while the other one is g
 * This includes ***Auditing, Logging, Metrics and Analytics***.
 
 ## Extensibility
-* The final idea is to keep the system ***Extensible*** so that we can add new features with a lot of changes.
+* The final idea is to keep the system ***Extensible*** so that we can add new features without a lot of changes.
 * e.g. the Delivery Agent doesn't needs to know that they are delivering a Pizza; it can be burger tomorrow.
 
 ## Sources:
