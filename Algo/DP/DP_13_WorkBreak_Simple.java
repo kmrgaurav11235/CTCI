@@ -47,8 +47,8 @@ public class DP_13_WorkBreak_Simple {
 
         for (int i = 1; i <= n; i++) {
             for (int j = 0; j < i; j++) {
-                String subString = str.substring(j, i);
-                if (memo[j] && dict.contains(subString)) {
+                String suffixString = str.substring(j, i);
+                if (memo[j] && dict.contains(suffixString)) {
                     memo[i] = true;
                     break;
                 }
