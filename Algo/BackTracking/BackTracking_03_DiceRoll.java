@@ -12,7 +12,7 @@ Finding solutions by trying partial solutions and abandoning them if they are no
 
 Used for:
 - Producing all permutations of a set of values.
-- Combinotorics 
+- Combinatorics 
 - Logical programming
 - Escaping a maze.
 etc.
@@ -23,7 +23,7 @@ Explore (decisions):
     - Else, handle one decision here and rest by recursion. 
         For each available choice C for this decision:
             - choose C.
-            - Explore the remaining choices that could follow C through recusrion.
+            - Explore the remaining choices that could follow C through recursion.
             - Un-choose C (BACKTRACK!).
 */
 class BackTracking_03_DiceRoll {

@@ -1,5 +1,5 @@
 /*
-Write a program to print all decimal numbers of a particular length
+Write a program to print all non-negative decimal numbers of a particular length
 Lecture: https://www.youtube.com/watch?v=HvGkzDT2ffI
 */
 class BackTracking_02_PrintAllDecimal {
@@ -13,6 +13,7 @@ class BackTracking_02_PrintAllDecimal {
         for (int i = 0; i <= 9; i++) {
             printDecimalUtil(prefix + i, numOfDigitsLeftToFix - 1);
         }
+        // Comment: Use int prefix if you want to print '1' instead of '0001' when numOfDigits = 4
     }
 
     static void printDecimal(int numOfDigits) {

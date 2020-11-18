@@ -98,6 +98,9 @@ class BTT_05_VerticalOrderTraversal {
                 i) We will use a TreeMap instead of a HashMap.
                 ii) We will store keys as horizontal distance and values as 
                     ArrayList of Nodes. 
+            Comment: Probably better to use HashMap and a class with min-max values of horizontal distance because:
+            Insertion in HashMap = O(1)
+            Insertion in TreeMap = O(log n)
             */
             
             SortedMap<Integer, ArrayList<Node>> horizontalDistanceToNodeListMap = new TreeMap<>(); // To store the hd -> Nodes mapping
