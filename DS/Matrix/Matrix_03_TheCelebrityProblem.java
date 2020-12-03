@@ -32,7 +32,7 @@ https://www.geeksforgeeks.org/the-celebrity-problem/
 - Algorithm :
     1) Create two indices a and b, where a = 0 and b = n-1
     2) Run a loop until a is less than b.
-    3) Check if a knows b, then a can be celebrity. so incement a, i.e. a++
+    3) Check if a knows b, then a can be celebrity. so increment a, i.e. a++
     4) Else b cannot be celebrity, so decrement b, i.e. b–-
     5) Assign a as the celebrity
     6) Run a loop from 0 to n-1 and find the count of persons who knows the celebrity and the number of people whom 

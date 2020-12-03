@@ -9,7 +9,7 @@ https://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/
 - Algorithm:
     1) Create a recursive function that takes a node and the two values n1 and n2.
     2) If the value of the current node is less than both n1 and n2, then LCA lies in the 
-        right subtree. Call the recursive function for thr right subtree.
+        right subtree. Call the recursive function for the right subtree.
     3) If the value of the current node is greater than both n1 and n2, then LCA lies in 
         the left subtree. Call the recursive function for thr left subtree.
     4) If both the above cases are false then return the current node as LCA.

@@ -11,7 +11,7 @@ https://www.geeksforgeeks.org/inorder-succesor-node-binary-tree/
         the basis of the right subtree of the input node being empty or not.
         1) If right subtree of node is not null, then successor lies in right subtree. Do the following:
             Go to right subtree and return the node with minimum key value in the right subtree.
-        2) If right sbtree of node is null, then successor is one of the ancestors. Do the following:
+        2) If right subtree of node is null, then successor is one of the ancestors. Do the following:
             Travel up using the parent pointer until you see a node which is left child of its parent. The parent 
             of such a node is the successor.
 - Method 3:

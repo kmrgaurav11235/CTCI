@@ -99,15 +99,15 @@ public class BTCC_01_CloneBTWithRandomPointers {
 
         // This function will restore left pointers correctly in both original and 
         // cloned tree 
-        private Node seperateCloneFromOriginal(Node node) {
+        private Node separateCloneFromOriginal(Node node) {
             if (node == null) {
                 return null;
             }
             Node clone = node.left;
             node.left = node.left.left;
 
-            clone.left = seperateCloneFromOriginal(node.left);
-            clone.right = seperateCloneFromOriginal(node.right);
+            clone.left = separateCloneFromOriginal(node.left);
+            clone.right = separateCloneFromOriginal(node.right);
 
             return clone;
         }
@@ -119,7 +119,7 @@ public class BTCC_01_CloneBTWithRandomPointers {
             }
             insertCloneNodes(root);
             setRandomPointerForClonedNodes(root);
-            clonedTree.root = seperateCloneFromOriginal(root);
+            clonedTree.root = separateCloneFromOriginal(root);
             return clonedTree;
         }
     }

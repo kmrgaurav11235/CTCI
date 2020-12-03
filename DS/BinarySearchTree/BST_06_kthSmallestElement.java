@@ -13,7 +13,6 @@ https://www.geeksforgeeks.org/find-k-th-smallest-element-in-bst-order-statistics
            4     12
                 /  \ 
               10    14
-
 - Algorithm: The idea is to use Inorder Traversal.
     * The Inorder Traversal of a BST traverses the nodes in increasing order. So, the idea is to traverse the 
         tree in Inorder. 

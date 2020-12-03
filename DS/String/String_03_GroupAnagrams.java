@@ -9,6 +9,8 @@ import java.util.Map;
 https://leetcode.com/problems/group-anagrams/discuss/19176/Share-my-short-JAVA-solution
 https://www.geeksforgeeks.org/given-a-sequence-of-words-print-all-anagrams-together/
 
+- Given an array of words, print all anagrams together. For example, if the given array is ["cat", "dog", 
+    "tac", "god", "act"], then output may be [["cat", "tac", "act"], ["dog", "god"]].
 - To check if two strings are anagrams, we have two options:
     1) Sort the strings and check if they are the same. Time: O(n log n).
     2) Count the frequency of distinct character. Time: O(n), with some extra space.
@@ -61,7 +63,6 @@ public class String_03_GroupAnagrams {
             }
 
             String mapKey = String.valueOf(frequency);
-            System.out.println(mapKey);
             if (!map.containsKey(mapKey)) {
                 map.put(mapKey, new LinkedList<>());
             }

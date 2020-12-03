@@ -92,6 +92,11 @@ public class LL_12_AddTwoNumbersInLL {
     }
 
     private static NodeAndCarry propagateCarry(Node start, Node end, Node sumStart, int sumCarry) {
+        /*
+        COMMENT: A more intuitive way to propagate carry is to use a Stack:
+        1) Traverse the larger list from 'start' to before 'sumStart' and push every visited node to stack.
+        2) Pop a node from stack and compare. If you have carry, add to it.
+        */
         int sum = 0;
         if (start.next == end) {
             sum = start.data + sumCarry;

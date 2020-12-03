@@ -21,6 +21,7 @@ https://www.geeksforgeeks.org/flattening-a-linked-list/
 - The idea is to use merge() process of merge sort for linked lists. We use merge() to merge lists one by one. 
     We recursively merge() the current list with already flattened list. The down pointer is used to link nodes 
     of the flattened list.
+- Another idea is to merge using a heap of length k(= Number of nodes in the horizontal LL).
 */
 public class LL_13_FlattenLL {
     static class Node {
