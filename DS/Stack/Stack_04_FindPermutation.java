@@ -27,7 +27,7 @@ https://www.geeksforgeeks.org/form-minimum-number-from-given-sequence/
 - Time Complexity: O(n) 
     Auxiliary Space: O(n)
 */
-public class Stack_04_NextPermutation {
+public class Stack_04_FindPermutation {
     static String nextPermutation(String input) {
         if (input == null || input.length() == 0) {
             return "";
