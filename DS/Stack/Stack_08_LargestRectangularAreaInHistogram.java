@@ -43,7 +43,7 @@ https://www.geeksforgeeks.org/largest-rectangle-under-histogram/
     3) If the stack is not empty, then one by one remove all bars from stack and do step 2.b for every 
         removed bar.
 */
-public class Stack_07_LargestRectangularAreaInHistogram {
+public class Stack_08_LargestRectangularAreaInHistogram {
     static int getMaxArea(int[] hist, int n) {
         int maxArea = 0, currArea = 0;
         Deque<Integer> stack = new LinkedList<>();
