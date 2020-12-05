@@ -21,7 +21,7 @@ https://www.geeksforgeeks.org/the-stock-span-problem/
     price of the stock was less than or equal to price[i] and then push the value of day 
     i back into the stack.
 */
-public class Stack_05_StockSpan {
+public class Stack_06_StockSpan {
     static int[] calculateSpan(int[] price, int n) {
         int [] span = new int [n];
         Deque<Integer> priceIndexStack = new LinkedList<>();

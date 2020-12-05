@@ -35,7 +35,7 @@ import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class Stack_04_NextGreaterElement {
+public class Stack_05_NextGreaterElement {
 
     private static int[] getNextGreaterElements(int[] arr, int n) {
         int [] nge = new int [n];

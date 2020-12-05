@@ -51,7 +51,7 @@ https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/
     * For ‘Get Min’ operation: O(1)
     Auxiliary Space: O(n).
 */
-public class Stack_06_StackWithGetMin {
+public class Stack_07_StackWithGetMin {
     static class SpecialStack<T extends Comparable<T>>{
         private Stack<T> mainStack;
         private Stack<T> minItemStack;

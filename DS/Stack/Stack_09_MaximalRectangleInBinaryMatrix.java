@@ -58,7 +58,7 @@ https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/
     Stack is required to store the columns.
 
 */
-public class Stack_08_MaximalRectangleInBinaryMatrix {
+public class Stack_09_MaximalRectangleInBinaryMatrix {
     static class HistogramResult {
         int left, right, height, area;
 
