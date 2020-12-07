@@ -32,7 +32,7 @@ https://www.geeksforgeeks.org/find-triplets-array-whose-sum-equal-zero/
 - Auxiliary Space : O(1), no extra space is required, so the time complexity is constant.
 
 */
-public class AS_07_TripletsWithZeroSum {
+public class ATP_02_TripletsWithZeroSum {
     static void findTriplets(int[] arr, int n) {
         if (n < 3) {
             System.out.println("Error!! Length of array should be >= 3.");

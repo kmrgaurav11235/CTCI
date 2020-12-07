@@ -29,7 +29,7 @@ https://www.geeksforgeeks.org/given-an-array-arr-find-the-maximum-j-i-such-that-
 - Time Complexity: O(n) 
     Auxiliary Space: O(n)
 */
-public class AS_09_MaxDistance {
+public class AS_07_MaxDistance {
     static int maxDistance(int[] arr) {
         if (arr == null || arr.length < 2) {
             return 0;

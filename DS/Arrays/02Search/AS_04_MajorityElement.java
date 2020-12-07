@@ -41,7 +41,7 @@ https://leetcode.com/problems/majority-element/discuss/51611/Java-solutions-(sor
     5. After the loop ends, start another loop and check if the count is greater than half the size of the 
     array, print the element. Else print that there is no majority element
 */
-public class AS_05_MajorityElement {
+public class AS_04_MajorityElement {
     static void printMajorityElement(int[] nums, int n) {
         int majorityCandidate = getMajorityCandidate(nums, n);
 

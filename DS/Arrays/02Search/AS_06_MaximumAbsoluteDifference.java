@@ -65,7 +65,7 @@ https://www.geeksforgeeks.org/maximum-absolute-difference-value-index-sums/
             minimum values of A[i] – i respectively. max((A[i] – i) – (A[j] – j)) = max2 – min2
 
 */
-public class AS_08_MaximumAbsoluteDifference {
+public class AS_06_MaximumAbsoluteDifference {
     static int maxAbsoluteDistance(int[] arr) {
         if (arr == null || arr.length < 2) {
             return 0;

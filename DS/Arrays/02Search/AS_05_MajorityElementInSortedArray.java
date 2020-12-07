@@ -19,7 +19,7 @@ https://www.geeksforgeeks.org/check-for-majority-element-in-a-sorted-array/
 */
 import java.util.Arrays;
 
-public class AS_06_MajorityElementInSortedArray {
+public class AS_05_MajorityElementInSortedArray {
 
     private static int binarySearchFirstIndex(int[] arr, int left, int right, int num) {
         /* If x is present in arr[low...high] then returns the index of first occurrence of num, 

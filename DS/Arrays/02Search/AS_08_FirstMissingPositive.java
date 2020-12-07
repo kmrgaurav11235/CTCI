@@ -35,7 +35,7 @@ https://www.geeksforgeeks.org/find-the-smallest-positive-number-missing-from-an-
 - Afterwards, find the first cell which isn't negative (doesn't appear in the array).
 - If no positive numbers were found, this means the array contains all numbers 1..n. Return n + 1.
 */
-public class AS_10_FirstMissingPositive {
+public class AS_08_FirstMissingPositive {
     static int firstMissingPositive(int [] arr) {
         if (arr == null || arr.length == 0) {
             return 0;
